@@ -1,16 +1,12 @@
 const deck = [
-  { name: '1', img: 'aquaman1.jpg' },
-  { name: '1', img: 'aquaman2.jpg' },
-  { name: '1', img: 'aquaman3.jpg' },
-  { name: '1', img: 'aquaman4.jpg' },
-  { name: '2', img: 'batman1.jpg' },
-  { name: '2', img: 'batman2.jpg' },
-  { name: '2', img: 'batman3.jpg' },
-  { name: '2', img: 'batman4.jpg' },
-  { name: '3', img: 'captain-america1.jpg' },
-  { name: '3', img: 'captain-america2.jpg' },
-  { name: '3', img: 'captain-america3.jpg' },
-  { name: '3', img: 'captain-america4.jpg' },
+  { name: '2', suit: '♥️' },
+  { name: '2', suit: '♦️' },
+  { name: '2', suit: '♠️' },
+  { name: '2', suit: '♣️' },
+  { name: '3', suit: '♥️' },
+  { name: '3', suit: '♦️' },
+  { name: '3', suit: '♠️' },
+  { name: '3', suit: '♣️' },
   { name: '4', img: 'fantastic-four1.jpg' },
   { name: '4', img: 'fantastic-four2.jpg' },
   { name: '4', img: 'fantastic-four3.jpg' },
@@ -39,19 +35,79 @@ const deck = [
   { name: '10', img: 'superman2.jpg' },
   { name: '10', img: 'superman3.jpg' },
   { name: '10', img: 'superman4.jpg' },
-  { name: '11', img: 'the-avengers1.jpg' },
-  { name: '11', img: 'the-avengers2.jpg' },
-  { name: '11', img: 'the-avengers3.jpg' },
-  { name: '11', img: 'the-avengers4.jpg' },
-  { name: '12', img: 'thor1.jpg' },
-  { name: '12', img: 'thor2.jpg' },
-  { name: '12', img: 'thor3.jpg' },
-  { name: '12', img: 'thor4.jpg' },
-  { name: '13', img: 'abc1.jpg' },
-  { name: '13', img: 'abc2.jpg' },
-  { name: '13', img: 'abc3.jpg' },
-  { name: '13', img: 'abc4.jpg' },
+  { name: 'Jack', img: 'the-avengers1.jpg' },
+  { name: 'Jack', img: 'the-avengers2.jpg' },
+  { name: 'Jack', img: 'the-avengers3.jpg' },
+  { name: 'Jack', img: 'the-avengers4.jpg' },
+  { name: 'Queen', img: 'thor1.jpg' },
+  { name: 'Queen', img: 'thor2.jpg' },
+  { name: 'Queen', img: 'thor3.jpg' },
+  { name: 'Queen', img: 'thor4.jpg' },
+  { name: 'King', img: 'abc1.jpg' },
+  { name: 'King', img: 'abc2.jpg' },
+  { name: 'King', img: 'abc3.jpg' },
+  { name: 'King', img: 'abc4.jpg' },
+  { name: 'Ace', img: 'aquaman1.jpg' },
+  { name: 'Ace', img: 'aquaman2.jpg' },
+  { name: 'Ace', img: 'aquaman3.jpg' },
+  { name: 'Ace', img: 'aquaman4.jpg' },
 ];
 
 const game = new Game(deck);
+game.shuffleDeck();
 console.log('in game', game.deck);
+
+const userBet = document.querySelectorAll('.bet-option'); 
+const thisBet = document.querySelector('#current-bet');
+
+
+userBet.forEach(bet => {
+  bet.addEventListener("click", event => {
+
+    if(game.isValidBet(event)) {
+      console.log("Play")
+      thisBet.textContent = game.currentBet;
+      // show game screen
+    }
+    else {
+      console.log('No go 😭');
+      // Show error  screen
+    }
+    // original 
+    // if(game.cash >= event.target.innerHTML) {
+    //   console.log("Play")
+    //   console.log(game.dealCard());
+    //   game.currentBet=event.target.innerHTML;
+    //   thisBet.textContent=game.currentBet;
+    
+    // }
+    //   else 
+    //     console.log('No go 😭');
+      })
+})
+
+
+//deal player card and push to dealt cards
+game.dealCard.push(game.dealCard());
+
+// deal dealer card and push to dealt cards
+game.dealCard.push(game.dealCard());
+
+if(game.dealtCards.length === 2) {
+  
+}
+
+
+// Steps:
+// 1. Load the game screen
+// 2. Get user bet amount option (min. = 10)- 
+//     a. if bet < bank, show msg
+//     b. if bet >= bank, update bet amout
+// 3. Deal 2 cards from the deck
+// 4. Check which dealt card wis: ++/ -- bank accordingly
+// 5. If draw, show 'war' option: double original bet OR forfeit 0.5 of bet
+//     a. if bank >= 2X bet, allow 'war'
+//     b. else decrease bank by 0.5 of original bet
+// 6. Check endGame () 
+//     a. if true, show restart game
+

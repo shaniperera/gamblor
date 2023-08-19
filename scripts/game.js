@@ -3,9 +3,9 @@ class Game {
         this.deck = deck;
         // pop the cards already dealt into an array
         this.dealtCards = [];
-        this.bet = bet;
-        this.cash = 100;
-        this.shuffleDeck();
+        this.currentBet = 0;
+        this.cash = 90;
+        // this.shuffleDeck();
     }
 
     shuffleDeck() {
@@ -23,6 +23,10 @@ class Game {
         }
         return this.deck;
     }
+
+    dealCard(){
+        return this.deck.shift()
+    }
     checkWinner(card1, card2) {
         if(card1 > card2) {
             return card1;
@@ -34,5 +38,19 @@ class Game {
         if (this.cash === 0) {
             return true;
         }
+    }
+
+    isValidBet(event) {
+        let isValidBet = false;
+        if(this.cash >= event.target.innerHTML) {
+            
+            // set current bet to user clicked value
+            this.currentBet = event.target.innerHTML;
+            isValidBet = true;
+            }
+            else {
+                isValidBet = false;
+            }
+          return isValidBet;  
     }
 }
