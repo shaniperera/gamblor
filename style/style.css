@@ -44,8 +44,15 @@ h1 {
     border-radius: 0.5rem;
 }
 
-/* #bet-options {
+.bet-options {
     display: flex;
-    justify-content: space-around;
-    padding: 30px;
-} */
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.play {
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+}

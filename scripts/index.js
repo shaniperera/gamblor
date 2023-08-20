@@ -1,61 +1,77 @@
 const deck = [
-  { name: '2', suit: '♥️' },
-  { name: '2', suit: '♦️' },
-  { name: '2', suit: '♠️' },
-  { name: '2', suit: '♣️' },
-  { name: '3', suit: '♥️' },
-  { name: '3', suit: '♦️' },
-  { name: '3', suit: '♠️' },
-  { name: '3', suit: '♣️' },
-  { name: '4', img: 'fantastic-four1.jpg' },
-  { name: '4', img: 'fantastic-four2.jpg' },
-  { name: '4', img: 'fantastic-four3.jpg' },
-  { name: '4', img: 'fantastic-four4.jpg' },
-  { name: '5', img: 'flash1.jpg' },
-  { name: '5', img: 'flash2.jpg' },
-  { name: '5', img: 'flash3.jpg' },
-  { name: '5', img: 'flash4.jpg' },
-  { name: '6', img: 'green-arrow1.jpg' },
-  { name: '6', img: 'green-arrow2.jpg' },
-  { name: '6', img: 'green-arrow3.jpg' },
-  { name: '6', img: 'green-arrow4.jpg' },
-  { name: '7', img: 'green-lantern1.jpg' },
-  { name: '7', img: 'green-lantern2.jpg' },
-  { name: '7', img: 'green-lantern3.jpg' },
-  { name: '7', img: 'green-lantern4.jpg' },
-  { name: '8', img: 'ironman1.jpg' },
-  { name: '8', img: 'ironman2.jpg' },
-  { name: '8', img: 'ironman3.jpg' },
-  { name: '8', img: 'ironman4.jpg' },
-  { name: '9', img: 'spiderman1.jpg' },
-  { name: '9', img: 'spiderman2.jpg' },
-  { name: '9', img: 'spiderman3.jpg' },
-  { name: '9', img: 'spiderman4.jpg' },
-  { name: '10', img: 'superman1.jpg' },
-  { name: '10', img: 'superman2.jpg' },
-  { name: '10', img: 'superman3.jpg' },
-  { name: '10', img: 'superman4.jpg' },
-  { name: 'Jack', img: 'the-avengers1.jpg' },
-  { name: 'Jack', img: 'the-avengers2.jpg' },
-  { name: 'Jack', img: 'the-avengers3.jpg' },
-  { name: 'Jack', img: 'the-avengers4.jpg' },
-  { name: 'Queen', img: 'thor1.jpg' },
-  { name: 'Queen', img: 'thor2.jpg' },
-  { name: 'Queen', img: 'thor3.jpg' },
-  { name: 'Queen', img: 'thor4.jpg' },
-  { name: 'King', img: 'abc1.jpg' },
-  { name: 'King', img: 'abc2.jpg' },
-  { name: 'King', img: 'abc3.jpg' },
-  { name: 'King', img: 'abc4.jpg' },
-  { name: 'Ace', img: 'aquaman1.jpg' },
-  { name: 'Ace', img: 'aquaman2.jpg' },
-  { name: 'Ace', img: 'aquaman3.jpg' },
-  { name: 'Ace', img: 'aquaman4.jpg' },
+  { value: '2', suit: '♥️' },
+  { value: '2', suit: '♦️' },
+  { value: '2', suit: '♠️' },
+  { value: '2', suit: '♣️' },
+  { value: '3', suit: '♥️' },
+  { value: '3', suit: '♦️' },
+  { value: '3', suit: '♠️' },
+  { value: '3', suit: '♣️' },
+  { value: '4', suit: '♥️' },
+  { value: '4', suit: '♦️' },
+  { value: '4', suit: '♠️' },
+  { value: '4', suit: '♣️' },
+  { value: '5', suit: '♣️' },
+  { value: '5', suit: '♥️' },
+  { value: '5', suit: '♦️' },
+  { value: '5', suit: '♠️' },
+  { value: '6', suit: '♣️' },
+  { value: '6', suit: '♥️' },
+  { value: '6', suit: '♦️' },
+  { value: '6', suit: '♠️' },
+  { value: '7', suit: '♣️' },
+  { value: '7', suit: '♥️' },
+  { value: '7', suit: '♦️' },
+  { value: '7', suit: '♠️' },
+  { value: '8', suit: '♣️' },
+  { value: '8', suit: '♥️' },
+  { value: '8', suit: '♦️' },
+  { value: '8', suit: '♠️' },
+  { value: '9', suit: '♣️' },
+  { value: '9', suit: '♥️' },
+  { value: '9', suit: '♦️' },
+  { value: '9', suit: '♠️' },
+  { value: '10', suit: '♣️' },
+  { value: '10', suit: '♥️' },
+  { value: '10', suit: '♦️' },
+  { value: '10', suit: '♠️' },
+  { value: 'J', suit: '♣️' },
+  { value: 'J', suit: '♥️' },
+  { value: 'J', suit: '♦️' },
+  { value: 'J', suit: '♠️' },
+  { value: 'Q', suit: '♣️' },
+  { value: 'Q', suit: '♥️' },
+  { value: 'Q', suit: '♦️' },
+  { value: 'Q', suit: '♠️' },
+  { value: 'K', suit: '♣️' },
+  { value: 'K', suit: '♥️' },
+  { value: 'K', suit: '♦️' },
+  { value: 'K', suit: '♠️' },
+  { value: 'A', suit: '♣️' },
+  { value: 'A', suit: '♥️' },
+  { value: 'A', suit: '♦️' },
+  { value: 'A', suit: '♠️' },
 ];
+
+const cardMap = {
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9,
+  "10": 10,
+  "J": 11,
+  "Q": 12,
+  "K": 13,
+  "A": 14,
+}
 
 const game = new Game(deck);
 game.shuffleDeck();
-console.log('in game', game.deck);
+console.log('in game shuffled deck: ', game.deck);
 
 const userBet = document.querySelectorAll('.bet-option'); 
 const thisBet = document.querySelector('#current-bet');
@@ -65,13 +81,15 @@ userBet.forEach(bet => {
   bet.addEventListener("click", event => {
 
     if(game.isValidBet(event)) {
-      console.log("Play")
+      console.log("Ready to Play")
       thisBet.textContent = game.currentBet;
-      // show game screen
+      console.log('Display the bet:',thisBet.innerHTML);
+      // todo: show game screen/ hide or disable betting buttons(?)
     }
     else {
       console.log('No go 😭');
-      // Show error  screen
+      thisBet.textContent = game.currentBet;
+      // todo: Show error prompt "Not enought cash to bet"
     }
     // original 
     // if(game.cash >= event.target.innerHTML) {
@@ -86,17 +104,42 @@ userBet.forEach(bet => {
       })
 })
 
+const userPlay = document.querySelector('.play');
+const result = document.querySelector('.result');
+let playerCard;
+let dealerCard;
 
-//deal player card and push to dealt cards
-game.dealCard.push(game.dealCard());
-
-// deal dealer card and push to dealt cards
-game.dealCard.push(game.dealCard());
-
-if(game.dealtCards.length === 2) {
+ userPlay.addEventListener("click", () => {
+  if(game.currentBet === 0) {
+    //todo show prompt to select valid bet first to play
+    console.log('Must bet first')
+  } 
+    else {
+    console.log('**** in plaaaayyyyyy ****')
+    // deal the player card and push to dealt cards array
+    playerCard = game.dealCard();
+    game.dealtCards.push(playerCard);
+    // deal the dealer card and push to dealt cardsarray
+    dealerCard = game.dealCard();
+    game.dealtCards.push(dealerCard);
+    // console.log(game.dealtCards);
+    }
   
-}
+    if(game.checkWinner(playerCard, dealerCard)) {
+      result.textContent = 'Player Wins 🍩'
+      console.log('winner player: cards are:', playerCard, dealerCard);
+    } 
+      else if (game.checkWinner(dealerCard,playerCard)) {
+      result.textContent = 'Casino Wins 😫'
+      console.log('winner dealer: cards are:', dealerCard,playerCard);
+    }
+     else {
+      console.log('draw')
+     }
+  
+ });
 
+  // goToWar();
 
 // Steps:
 // 1. Load the game screen
