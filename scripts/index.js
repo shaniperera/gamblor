@@ -1,57 +1,236 @@
+// const deck = [
+//   { value: '2', suit: '♥️' },
+//   { value: '2', suit: '♦️' },
+//   { value: '2', suit: '♠️' },
+//   { value: '2', suit: '♣️' },
+//   { value: '3', suit: '♥️' },
+//   { value: '3', suit: '♦️' },
+//   { value: '3', suit: '♠️' },
+//   { value: '3', suit: '♣️' },
+//   { value: '4', suit: '♥️' },
+//   { value: '4', suit: '♦️' },
+//   { value: '4', suit: '♠️' },
+//   { value: '4', suit: '♣️' },
+//   { value: '5', suit: '♣️' },
+//   { value: '5', suit: '♥️' },
+//   { value: '5', suit: '♦️' },
+//   { value: '5', suit: '♠️' },
+//   { value: '6', suit: '♣️' },
+//   { value: '6', suit: '♥️' },
+//   { value: '6', suit: '♦️' },
+//   { value: '6', suit: '♠️' },
+//   { value: '7', suit: '♣️' },
+//   { value: '7', suit: '♥️' },
+//   { value: '7', suit: '♦️' },
+//   { value: '7', suit: '♠️' },
+//   { value: '8', suit: '♣️' },
+//   { value: '8', suit: '♥️' },
+//   { value: '8', suit: '♦️' },
+//   { value: '8', suit: '♠️' },
+//   { value: '9', suit: '♣️' },
+//   { value: '9', suit: '♥️' },
+//   { value: '9', suit: '♦️' },
+//   { value: '9', suit: '♠️' },
+//   { value: '10', suit: '♣️' },
+//   { value: '10', suit: '♥️' },
+//   { value: '10', suit: '♦️' },
+//   { value: '10', suit: '♠️' },
+//   { value: 'J', suit: '♣️' },
+//   { value: 'J', suit: '♥️' },
+//   { value: 'J', suit: '♦️' },
+//   { value: 'J', suit: '♠️' },
+//   { value: 'Q', suit: '♣️' },
+//   { value: 'Q', suit: '♥️' },
+//   { value: 'Q', suit: '♦️' },
+//   { value: 'Q', suit: '♠️' },
+//   { value: 'K', suit: '♣️' },
+//   { value: 'K', suit: '♥️' },
+//   { value: 'K', suit: '♦️' },
+//   { value: 'K', suit: '♠️' },
+//   { value: 'A', suit: '♣️' },
+//   { value: 'A', suit: '♥️' },
+//   { value: 'A', suit: '♦️' },
+//   { value: 'A', suit: '♠️' },
+// ];
+
 const deck = [
-  { name: '1', img: 'aquaman1.jpg' },
-  { name: '1', img: 'aquaman2.jpg' },
-  { name: '1', img: 'aquaman3.jpg' },
-  { name: '1', img: 'aquaman4.jpg' },
-  { name: '2', img: 'batman1.jpg' },
-  { name: '2', img: 'batman2.jpg' },
-  { name: '2', img: 'batman3.jpg' },
-  { name: '2', img: 'batman4.jpg' },
-  { name: '3', img: 'captain-america1.jpg' },
-  { name: '3', img: 'captain-america2.jpg' },
-  { name: '3', img: 'captain-america3.jpg' },
-  { name: '3', img: 'captain-america4.jpg' },
-  { name: '4', img: 'fantastic-four1.jpg' },
-  { name: '4', img: 'fantastic-four2.jpg' },
-  { name: '4', img: 'fantastic-four3.jpg' },
-  { name: '4', img: 'fantastic-four4.jpg' },
-  { name: '5', img: 'flash1.jpg' },
-  { name: '5', img: 'flash2.jpg' },
-  { name: '5', img: 'flash3.jpg' },
-  { name: '5', img: 'flash4.jpg' },
-  { name: '6', img: 'green-arrow1.jpg' },
-  { name: '6', img: 'green-arrow2.jpg' },
-  { name: '6', img: 'green-arrow3.jpg' },
-  { name: '6', img: 'green-arrow4.jpg' },
-  { name: '7', img: 'green-lantern1.jpg' },
-  { name: '7', img: 'green-lantern2.jpg' },
-  { name: '7', img: 'green-lantern3.jpg' },
-  { name: '7', img: 'green-lantern4.jpg' },
-  { name: '8', img: 'ironman1.jpg' },
-  { name: '8', img: 'ironman2.jpg' },
-  { name: '8', img: 'ironman3.jpg' },
-  { name: '8', img: 'ironman4.jpg' },
-  { name: '9', img: 'spiderman1.jpg' },
-  { name: '9', img: 'spiderman2.jpg' },
-  { name: '9', img: 'spiderman3.jpg' },
-  { name: '9', img: 'spiderman4.jpg' },
-  { name: '10', img: 'superman1.jpg' },
-  { name: '10', img: 'superman2.jpg' },
-  { name: '10', img: 'superman3.jpg' },
-  { name: '10', img: 'superman4.jpg' },
-  { name: '11', img: 'the-avengers1.jpg' },
-  { name: '11', img: 'the-avengers2.jpg' },
-  { name: '11', img: 'the-avengers3.jpg' },
-  { name: '11', img: 'the-avengers4.jpg' },
-  { name: '12', img: 'thor1.jpg' },
-  { name: '12', img: 'thor2.jpg' },
-  { name: '12', img: 'thor3.jpg' },
-  { name: '12', img: 'thor4.jpg' },
-  { name: '13', img: 'abc1.jpg' },
-  { name: '13', img: 'abc2.jpg' },
-  { name: '13', img: 'abc3.jpg' },
-  { name: '13', img: 'abc4.jpg' },
-];
+  { value: '2', suit: '♥️' },
+  { value: '2', suit: '♦️' },
+  { value: '2', suit: '♠️' },
+  { value: '2', suit: '♣️' },
+  { value: '2', suit: '♥️' },
+  { value: '2', suit: '♦️' },
+  { value: '2', suit: '♠️' },
+  { value: '2', suit: '♣️' },
+  { value: '2', suit: '♥️' },
+  { value: '2', suit: '♦️' },
+  { value: '2', suit: '♠️' },
+  { value: '2', suit: '♣️' },
+]
+// object literal that maps card values
+const cardMap = {
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9,
+  "10": 10,
+  "J": 11,
+  "Q": 12,
+  "K": 13,
+  "A": 14,
+}
 
 const game = new Game(deck);
-console.log('in game', game.deck);
+// game.shuffleDeck();
+console.log('in game shuffled deck: ',game.shuffleDeck());
+
+const userBet = document.querySelectorAll('.bet-option'); 
+const thisBet = document.querySelector('#current-bet');
+const userBank = document.querySelector('#bank');
+
+// console.log('Global scope type of "game.cash":', typeof game.cash); // number
+// console.log('Global scope type of "game.currentBet":', typeof game.currentBet); // number
+
+userBet.forEach(bet => {
+  bet.addEventListener("click", event => {
+    
+    if(game.isValidBet(event)) {
+      // console.log('In 1st ifStatement scope type of "game.currentBet":', typeof game.currentBet, game.currentBet); // string
+      console.log("Ready to Play")
+      thisBet.textContent = game.currentBet;
+
+      // console.log('Display the bet to user:',thisBet.innerHTML);
+      // todo: show game screen/ hide or disable betting buttons(?)
+    }
+    else {
+      console.log('Not enough cash 😭');
+      thisBet.textContent = game.currentBet;
+      // todo: Show error prompt "Not enought cash to bet"
+    }
+    // original 
+    // if(game.cash >= event.target.innerHTML) {
+    //   console.log("Play")
+    //   console.log(game.dealCard());
+    //   game.currentBet=event.target.innerHTML;
+    //   thisBet.textContent=game.currentBet;
+    
+    // }
+    //   else 
+    //     console.log('No go 😭');
+      })
+});
+
+const playButton = document.querySelector('.play');
+const result = document.querySelector('.result');
+let playerCard;
+let dealerCard;
+
+userPlay();
+
+function userPlay() {
+  playButton.addEventListener("click", () => {
+     // check if bet has been made and is valid
+    if(game.currentBet === 0) {
+      //todo show prompt to select valid bet first to play
+      console.log('Must BET first')
+    } 
+      else {
+      console.log('**** in plaaaayyyyyy ****')
+      // deal the player card and push to dealt cards array
+      playerCard = game.dealCard();
+      game.dealtCards.push(playerCard);
+      // deal the dealer card and push to dealt cardsarray
+      dealerCard = game.dealCard();
+      game.dealtCards.push(dealerCard);
+      // console.log(game.dealtCards);
+      console.log('dealt cards', game.dealtCards);
+  
+          if(game.checkWinner(cardMap, playerCard, dealerCard)) {
+              result.textContent = 'Player Wins 🍩';
+              console.log('winner: Player. cards are:', playerCard, dealerCard);
+              //todo set the game.cash amount to current value + currentBet value
+              // console.log('In 2nd ifStatment type of "game.cash":', typeof game.cash);
+              // console.log('In 2nd ifStatment type of "game.currentBet":', typeof game.currentBet);
+              updatBank(true, game.cash, game.currentBet);
+          } 
+              else if (game.checkWinner(cardMap, dealerCard,playerCard)) {
+                result.textContent = 'Casino Wins 😫'
+                console.log('winner: Dealer. cards are:', dealerCard,playerCard);
+                //todo set the game.cash amount to current value minus currentBet value
+                updatBank(false, game.cash, game.currentBet);
+            }
+                else {
+                  //todo: show overlay for "War" or "Forfeit"
+                  result.textContent = 'War or Forfiet?';
+                  console.log('Draw- cards are:',playerCard, dealerCard);
+                  //todo: on overlay, add listener to "war" to call gotToWar
+                  forfeit(game.currentBet);
+                }
+      }
+  
+   });
+   return;
+ }
+ // takes result of checkWinner and updates the bank accordingly
+function updatBank(result, cash, currentBet) {
+  game.currentBet = 0;
+  thisBet.textContent = game.currentBet;
+  if(result) {
+    game.cash = Number(cash) + Number(currentBet);
+      } else {
+          game.cash = Number(cash) - Number(currentBet);
+        }
+          userBank.innerHTML = game.cash;
+          return;
+};
+
+function gotToWar(bet, cash) {
+  // calc. the war bet (2 x currentBet)
+  let wager = 2 * bet;
+  console.log(" Wager:", wager);
+  // check if enough cash to place wager
+  if(cash >= wager) {
+    //set the current bet to the wager
+    game.currentBet = wager;
+    // todo: block other betting
+    console.log("New current Bet:", game.currentBet);
+    thisBet.textContent = game.currentBet
+    // console.log('You can go to war');
+    // game.currentBet = 0;
+
+  }
+  else {
+    // todo: show error msg is War clicked when not enough cash
+    console.log("Not enough cash. You must forfeit half your bet")
+  }
+  return;
+}
+function forfeit(bet) {
+  // reduce cash by half of original bet
+    game.cash -= bet * 0.5;
+    userBank.innerHTML = game.cash;
+    console.log("New bank", game.cash);
+    game.currentBet = 0;
+    thisBet.textContent = game.currentBet
+    console.log('You have decided to forfeit');
+  return;
+}
+
+
+// todo: Steps:
+// 1. Load the game screen
+// 2. Get user bet amount option (min. = 10)- 
+//     a. if bet < bank, show msg
+//     b. if bet >= bank, update bet amout
+// 3. Deal 2 cards from the deck
+// 4. Check which dealt card wins: ++/ -- bank accordingly
+// 5. If draw, show 'war' option: double original bet OR forfeit 0.5 of bet
+//     a. if bank >= 2X bet, allow 'war'
+//     b. else decrease bank by 0.5 of original bet
+// 6. Check endGame () 
+//     a. if true, show restart game
+

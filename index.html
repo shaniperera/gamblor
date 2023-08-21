@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Pick</title>
+    <title>gamblor</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
   <div>
-    <h1>Quick Pick</h1>
+    <h1>gamblor</h1>
   </div>
   <div id="score">
     <h2>Score</h2>
-    <p>💰 Bank:<span id="bank">100</span>€</p>
-    <p>🎰 Current Bet:<span id="bet">0</span>€</p>
+    <p>🍩 : <span id="bank">100</span></p>
+    <p>🃏Current Bet:<span id="current-bet">0</span></p>
   </div>
   <div id="casino-table"></div>
+  <h3 class = 'result'></h3>
+  <div id="playing-decks">
+    <img src="./img/marge-gamble.png" alt="marge gambling">
+    <div class=".player-card deck"></div>
+    <div class=".computer-card deck"></div>
+    <img src="./img/burns-casino.png" alt="marge gambling">
+  </div>
+  <div class="play">
+    <button>Play</button>
+  </div>
+  <div class="bet-options">
+    <button class="bet-option">10</button>
+    <button class="bet-option">20</button>
+    <button class="bet-option">50</button>
+    <button class="bet-option">100</button>
+  </div>
+  
   <script src="./scripts/game.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
