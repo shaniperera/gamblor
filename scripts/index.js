@@ -1,58 +1,72 @@
+// const deck = [
+//   { value: '2', suit: '♥️' },
+//   { value: '2', suit: '♦️' },
+//   { value: '2', suit: '♠️' },
+//   { value: '2', suit: '♣️' },
+//   { value: '3', suit: '♥️' },
+//   { value: '3', suit: '♦️' },
+//   { value: '3', suit: '♠️' },
+//   { value: '3', suit: '♣️' },
+//   { value: '4', suit: '♥️' },
+//   { value: '4', suit: '♦️' },
+//   { value: '4', suit: '♠️' },
+//   { value: '4', suit: '♣️' },
+//   { value: '5', suit: '♣️' },
+//   { value: '5', suit: '♥️' },
+//   { value: '5', suit: '♦️' },
+//   { value: '5', suit: '♠️' },
+//   { value: '6', suit: '♣️' },
+//   { value: '6', suit: '♥️' },
+//   { value: '6', suit: '♦️' },
+//   { value: '6', suit: '♠️' },
+//   { value: '7', suit: '♣️' },
+//   { value: '7', suit: '♥️' },
+//   { value: '7', suit: '♦️' },
+//   { value: '7', suit: '♠️' },
+//   { value: '8', suit: '♣️' },
+//   { value: '8', suit: '♥️' },
+//   { value: '8', suit: '♦️' },
+//   { value: '8', suit: '♠️' },
+//   { value: '9', suit: '♣️' },
+//   { value: '9', suit: '♥️' },
+//   { value: '9', suit: '♦️' },
+//   { value: '9', suit: '♠️' },
+//   { value: '10', suit: '♣️' },
+//   { value: '10', suit: '♥️' },
+//   { value: '10', suit: '♦️' },
+//   { value: '10', suit: '♠️' },
+//   { value: 'J', suit: '♣️' },
+//   { value: 'J', suit: '♥️' },
+//   { value: 'J', suit: '♦️' },
+//   { value: 'J', suit: '♠️' },
+//   { value: 'Q', suit: '♣️' },
+//   { value: 'Q', suit: '♥️' },
+//   { value: 'Q', suit: '♦️' },
+//   { value: 'Q', suit: '♠️' },
+//   { value: 'K', suit: '♣️' },
+//   { value: 'K', suit: '♥️' },
+//   { value: 'K', suit: '♦️' },
+//   { value: 'K', suit: '♠️' },
+//   { value: 'A', suit: '♣️' },
+//   { value: 'A', suit: '♥️' },
+//   { value: 'A', suit: '♦️' },
+//   { value: 'A', suit: '♠️' },
+// ];
+
 const deck = [
   { value: '2', suit: '♥️' },
   { value: '2', suit: '♦️' },
   { value: '2', suit: '♠️' },
   { value: '2', suit: '♣️' },
-  { value: '3', suit: '♥️' },
-  { value: '3', suit: '♦️' },
-  { value: '3', suit: '♠️' },
-  { value: '3', suit: '♣️' },
-  { value: '4', suit: '♥️' },
-  { value: '4', suit: '♦️' },
-  { value: '4', suit: '♠️' },
-  { value: '4', suit: '♣️' },
-  { value: '5', suit: '♣️' },
-  { value: '5', suit: '♥️' },
-  { value: '5', suit: '♦️' },
-  { value: '5', suit: '♠️' },
-  { value: '6', suit: '♣️' },
-  { value: '6', suit: '♥️' },
-  { value: '6', suit: '♦️' },
-  { value: '6', suit: '♠️' },
-  { value: '7', suit: '♣️' },
-  { value: '7', suit: '♥️' },
-  { value: '7', suit: '♦️' },
-  { value: '7', suit: '♠️' },
-  { value: '8', suit: '♣️' },
-  { value: '8', suit: '♥️' },
-  { value: '8', suit: '♦️' },
-  { value: '8', suit: '♠️' },
-  { value: '9', suit: '♣️' },
-  { value: '9', suit: '♥️' },
-  { value: '9', suit: '♦️' },
-  { value: '9', suit: '♠️' },
-  { value: '10', suit: '♣️' },
-  { value: '10', suit: '♥️' },
-  { value: '10', suit: '♦️' },
-  { value: '10', suit: '♠️' },
-  { value: 'J', suit: '♣️' },
-  { value: 'J', suit: '♥️' },
-  { value: 'J', suit: '♦️' },
-  { value: 'J', suit: '♠️' },
-  { value: 'Q', suit: '♣️' },
-  { value: 'Q', suit: '♥️' },
-  { value: 'Q', suit: '♦️' },
-  { value: 'Q', suit: '♠️' },
-  { value: 'K', suit: '♣️' },
-  { value: 'K', suit: '♥️' },
-  { value: 'K', suit: '♦️' },
-  { value: 'K', suit: '♠️' },
-  { value: 'A', suit: '♣️' },
-  { value: 'A', suit: '♥️' },
-  { value: 'A', suit: '♦️' },
-  { value: 'A', suit: '♠️' },
-];
-
+  { value: '2', suit: '♥️' },
+  { value: '2', suit: '♦️' },
+  { value: '2', suit: '♠️' },
+  { value: '2', suit: '♣️' },
+  { value: '2', suit: '♥️' },
+  { value: '2', suit: '♦️' },
+  { value: '2', suit: '♠️' },
+  { value: '2', suit: '♣️' },
+]
 // object literal that maps card values
 const cardMap = {
   "2": 2,
@@ -110,49 +124,57 @@ userBet.forEach(bet => {
       })
 });
 
-const userPlay = document.querySelector('.play');
+const playButton = document.querySelector('.play');
 const result = document.querySelector('.result');
 let playerCard;
 let dealerCard;
 
-// check if bet has been made and is valid
- userPlay.addEventListener("click", () => {
-  if(game.currentBet === 0) {
-    //todo show prompt to select valid bet first to play
-    console.log('Must BET first')
-  } 
-    else {
-    console.log('**** in plaaaayyyyyy ****')
-    // deal the player card and push to dealt cards array
-    playerCard = game.dealCard();
-    game.dealtCards.push(playerCard);
-    // deal the dealer card and push to dealt cardsarray
-    dealerCard = game.dealCard();
-    game.dealtCards.push(dealerCard);
-    // console.log(game.dealtCards);
-    console.log('dealt cards', game.dealtCards);
+userPlay();
 
-        if(game.checkWinner(cardMap, playerCard, dealerCard)) {
-            result.textContent = 'Player Wins 🍩';
-            console.log('winner: Player. cards are:', playerCard, dealerCard);
-            //todo set the game.cash amount to current value + currentBet value
-            // console.log('In 2nd ifStatment type of "game.cash":', typeof game.cash);
-            // console.log('In 2nd ifStatment type of "game.currentBet":', typeof game.currentBet);
-            updatBank(true, game.cash, game.currentBet);
-        } 
-            else if (game.checkWinner(cardMap, dealerCard,playerCard)) {
-              result.textContent = 'Casino Wins 😫'
-              console.log('winner: Dealer. cards are:', dealerCard,playerCard);
-              //todo set the game.cash amount to current value minus currentBet value
-              updatBank(false, game.cash, game.currentBet);
-          }
-              else {
-                result.textContent = 'draw'
-                console.log('draw: cards are:', dealerCard,playerCard);
-              }
-    }
-
- });
+function userPlay() {
+  playButton.addEventListener("click", () => {
+     // check if bet has been made and is valid
+    if(game.currentBet === 0) {
+      //todo show prompt to select valid bet first to play
+      console.log('Must BET first')
+    } 
+      else {
+      console.log('**** in plaaaayyyyyy ****')
+      // deal the player card and push to dealt cards array
+      playerCard = game.dealCard();
+      game.dealtCards.push(playerCard);
+      // deal the dealer card and push to dealt cardsarray
+      dealerCard = game.dealCard();
+      game.dealtCards.push(dealerCard);
+      // console.log(game.dealtCards);
+      console.log('dealt cards', game.dealtCards);
+  
+          if(game.checkWinner(cardMap, playerCard, dealerCard)) {
+              result.textContent = 'Player Wins 🍩';
+              console.log('winner: Player. cards are:', playerCard, dealerCard);
+              //todo set the game.cash amount to current value + currentBet value
+              // console.log('In 2nd ifStatment type of "game.cash":', typeof game.cash);
+              // console.log('In 2nd ifStatment type of "game.currentBet":', typeof game.currentBet);
+              updatBank(true, game.cash, game.currentBet);
+          } 
+              else if (game.checkWinner(cardMap, dealerCard,playerCard)) {
+                result.textContent = 'Casino Wins 😫'
+                console.log('winner: Dealer. cards are:', dealerCard,playerCard);
+                //todo set the game.cash amount to current value minus currentBet value
+                updatBank(false, game.cash, game.currentBet);
+            }
+                else {
+                  //todo: show overlay for "War" or "Forfeit"
+                  result.textContent = 'War or Forfiet?';
+                  console.log('Draw- cards are:',playerCard, dealerCard);
+                  //todo: on overlay, add listener to "war" to call gotToWar
+                  forfeit(game.currentBet);
+                }
+      }
+  
+   });
+   return;
+ }
  // takes result of checkWinner and updates the bank accordingly
 function updatBank(result, cash, currentBet) {
   game.currentBet = 0;
@@ -165,6 +187,38 @@ function updatBank(result, cash, currentBet) {
           userBank.innerHTML = game.cash;
           return;
 };
+
+function gotToWar(bet, cash) {
+  // calc. the war bet (2 x currentBet)
+  let wager = 2 * bet;
+  console.log(" Wager:", wager);
+  // check if enough cash to place wager
+  if(cash >= wager) {
+    //set the current bet to the wager
+    game.currentBet = wager;
+    // todo: block other betting
+    console.log("New current Bet:", game.currentBet);
+    thisBet.textContent = game.currentBet
+    // console.log('You can go to war');
+    // game.currentBet = 0;
+
+  }
+  else {
+    // todo: show error msg is War clicked when not enough cash
+    console.log("Not enough cash. You must forfeit half your bet")
+  }
+  return;
+}
+function forfeit(bet) {
+  // reduce cash by half of original bet
+    game.cash -= bet * 0.5;
+    userBank.innerHTML = game.cash;
+    console.log("New bank", game.cash);
+    game.currentBet = 0;
+    thisBet.textContent = game.currentBet
+    console.log('You have decided to forfeit');
+  return;
+}
 
 
 // todo: Steps:

@@ -1,7 +1,7 @@
 class Game {
     constructor(deck) {
         this.deck = deck;
-        this.shuffled;
+        this.shuffled = [];
         // pop the cards already dealt into an array
         this.dealtCards = [];
         this.currentBet = 0;
@@ -48,7 +48,7 @@ class Game {
         }
 
     dealCard(){
-        console.log("this.shuffle when dealing", this.shuffled)
+        console.log("this.shuffled when dealing", this.shuffled)
         let x = this.shuffled.shift()
         console.log(x, "the value of the card")
         return x
