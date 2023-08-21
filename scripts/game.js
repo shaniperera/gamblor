@@ -1,14 +1,16 @@
 class Game {
     constructor(deck) {
         this.deck = deck;
+        this.shuffled;
         // pop the cards already dealt into an array
         this.dealtCards = [];
         this.currentBet = 0;
-        this.cash = 90;
-        // this.shuffleDeck();
+        this.cash = 100;
+        ;
     }
 
     shuffleDeck() {
+        console.log("** shuffleDeck called **")
         if(!this.deck) {
             return undefined;
         } 
@@ -20,15 +22,22 @@ class Game {
             .sort((a, b) => a.sort - b.sort)
             // unmap to get the original objects
             .map(({ card }) => card);
-            this.deck = shuffled;
+
+            console.log('in shuffle before re-assign',this.deck)
+
+            this.shuffled = shuffled;
+
+            console.log('in shuffle after re-assign',this.shuffled)
+
+                return this.shuffled;
             }
-                return this.deck;
+                
     }
     isValidBet(event) {
             let isValidBet = false;
             if(this.cash >= event.target.innerHTML) {
-                this.currentBet = event.target.innerHTML;
                 // set current bet to user clicked value
+                this.currentBet = event.target.innerHTML;
                 isValidBet = true;
             }
                 else {
@@ -39,27 +48,15 @@ class Game {
         }
 
     dealCard(){
-        return this.deck.shift()
+        console.log("this.shuffle when dealing", this.shuffled)
+        let x = this.shuffled.shift()
+        console.log(x, "the value of the card")
+        return x
     }
 
-    checkWinner(card1, card2) {
-        if(!card1 && !card2) {
+    checkWinner(cardMap, card1, card2) {
+        if(!card1 && !card2 && !cardMap) {
             return undefined;
-        }
-        const cardMap = {
-        "2": 2,
-        "3": 3,
-        "4": 4,
-        "5": 5,
-        "6": 6,
-        "7": 7,
-        "8": 8,
-        "9": 9,
-        "10": 10,
-        "J": 11,
-        "Q": 12,
-        "K": 13,
-        "A": 14,
         }
         // console.log('map card 1 value',cardMap[card1.value]) 
         // console.log('map card 2 value',cardMap[card2.value]) 
@@ -74,7 +71,8 @@ class Game {
     }
 
     checkEndGame() {
-        if (this.cash === 0) {
+        // end game when cash left is less than min. bet
+        if (this.cash < 10) {
             return true;
         }
     }

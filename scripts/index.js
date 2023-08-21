@@ -53,6 +53,7 @@ const deck = [
   { value: 'A', suit: '♠️' },
 ];
 
+// object literal that maps card values
 const cardMap = {
   "2": 2,
   "3": 3,
@@ -70,24 +71,29 @@ const cardMap = {
 }
 
 const game = new Game(deck);
-game.shuffleDeck();
-console.log('in game shuffled deck: ', game.deck);
+// game.shuffleDeck();
+console.log('in game shuffled deck: ',game.shuffleDeck());
 
 const userBet = document.querySelectorAll('.bet-option'); 
 const thisBet = document.querySelector('#current-bet');
+const userBank = document.querySelector('#bank');
 
+// console.log('Global scope type of "game.cash":', typeof game.cash); // number
+// console.log('Global scope type of "game.currentBet":', typeof game.currentBet); // number
 
 userBet.forEach(bet => {
   bet.addEventListener("click", event => {
-
+    
     if(game.isValidBet(event)) {
+      // console.log('In 1st ifStatement scope type of "game.currentBet":', typeof game.currentBet, game.currentBet); // string
       console.log("Ready to Play")
       thisBet.textContent = game.currentBet;
-      console.log('Display the bet:',thisBet.innerHTML);
+
+      // console.log('Display the bet to user:',thisBet.innerHTML);
       // todo: show game screen/ hide or disable betting buttons(?)
     }
     else {
-      console.log('No go 😭');
+      console.log('Not enough cash 😭');
       thisBet.textContent = game.currentBet;
       // todo: Show error prompt "Not enought cash to bet"
     }
@@ -102,17 +108,18 @@ userBet.forEach(bet => {
     //   else 
     //     console.log('No go 😭');
       })
-})
+});
 
 const userPlay = document.querySelector('.play');
 const result = document.querySelector('.result');
 let playerCard;
 let dealerCard;
 
+// check if bet has been made and is valid
  userPlay.addEventListener("click", () => {
   if(game.currentBet === 0) {
     //todo show prompt to select valid bet first to play
-    console.log('Must bet first')
+    console.log('Must BET first')
   } 
     else {
     console.log('**** in plaaaayyyyyy ****')
@@ -123,31 +130,50 @@ let dealerCard;
     dealerCard = game.dealCard();
     game.dealtCards.push(dealerCard);
     // console.log(game.dealtCards);
+    console.log('dealt cards', game.dealtCards);
+
+        if(game.checkWinner(cardMap, playerCard, dealerCard)) {
+            result.textContent = 'Player Wins 🍩';
+            console.log('winner: Player. cards are:', playerCard, dealerCard);
+            //todo set the game.cash amount to current value + currentBet value
+            // console.log('In 2nd ifStatment type of "game.cash":', typeof game.cash);
+            // console.log('In 2nd ifStatment type of "game.currentBet":', typeof game.currentBet);
+            updatBank(true, game.cash, game.currentBet);
+        } 
+            else if (game.checkWinner(cardMap, dealerCard,playerCard)) {
+              result.textContent = 'Casino Wins 😫'
+              console.log('winner: Dealer. cards are:', dealerCard,playerCard);
+              //todo set the game.cash amount to current value minus currentBet value
+              updatBank(false, game.cash, game.currentBet);
+          }
+              else {
+                result.textContent = 'draw'
+                console.log('draw: cards are:', dealerCard,playerCard);
+              }
     }
-  
-    if(game.checkWinner(playerCard, dealerCard)) {
-      result.textContent = 'Player Wins 🍩'
-      console.log('winner player: cards are:', playerCard, dealerCard);
-    } 
-      else if (game.checkWinner(dealerCard,playerCard)) {
-      result.textContent = 'Casino Wins 😫'
-      console.log('winner dealer: cards are:', dealerCard,playerCard);
-    }
-     else {
-      console.log('draw')
-     }
-  
+
  });
+ // takes result of checkWinner and updates the bank accordingly
+function updatBank(result, cash, currentBet) {
+  game.currentBet = 0;
+  thisBet.textContent = game.currentBet;
+  if(result) {
+    game.cash = Number(cash) + Number(currentBet);
+      } else {
+          game.cash = Number(cash) - Number(currentBet);
+        }
+          userBank.innerHTML = game.cash;
+          return;
+};
 
-  // goToWar();
 
-// Steps:
+// todo: Steps:
 // 1. Load the game screen
 // 2. Get user bet amount option (min. = 10)- 
 //     a. if bet < bank, show msg
 //     b. if bet >= bank, update bet amout
 // 3. Deal 2 cards from the deck
-// 4. Check which dealt card wis: ++/ -- bank accordingly
+// 4. Check which dealt card wins: ++/ -- bank accordingly
 // 5. If draw, show 'war' option: double original bet OR forfeit 0.5 of bet
 //     a. if bank >= 2X bet, allow 'war'
 //     b. else decrease bank by 0.5 of original bet
