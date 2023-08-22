@@ -1,8 +1,8 @@
 const startButton = document.getElementById("start-button");
 // const game = new Game(buildDeck());
-const newDeck = ["A-S","A-H","A-C","A-D"];
+const newDeck = ["A-S","A-H","A-C","10-D","A-S","9-H","4-C","5-D","A-S","A-H","A-C","A-D","A-S","A-H","4-C","5-D"];
 const game = new Game(newDeck);
-console.log(newDeck);
+
 startButton.addEventListener("click", function () {
   game.startGame();
 })
@@ -68,7 +68,6 @@ function userPlay() {
   playButton.addEventListener("click", () => {
      // check if bet has been made and is valid
     if(game.currentBet === 0) {
-      //todo show prompt to select valid bet first to play
       swal("🍩🍩🍩🍩🍩", "Select a bet first!", "/img/homer-donut.jpeg");
     } 
       else {
@@ -91,50 +90,53 @@ function userPlay() {
         document.querySelector(".dealer-card").replaceChildren(cardImgDealer)
       }, "800");
       game.dealtCards.push(dealerCard);
-  
-          if(game.checkWinner(cardMap, playerCard, dealerCard)) {
-              let winImage = document.createElement("img")
-              winImage.src = "/img/homer-woohoo.gif";
-              console.log('winner: Player. cards are:', playerCard, dealerCard);
-              setTimeout(() => {result.append(winImage)},1200);
-              setTimeout(() => {winImage.style.display = 'none'},2500);
-              //todo set the game.cash amount to current value + currentBet value
-              updatBank(true, game.cash, game.currentBet);
-          } 
-              else if (game.checkWinner(cardMap, dealerCard,playerCard)) {
+
+      game.checkWinner(cardMap, playerCard, dealerCard);  
+          // if(game.checkWinner(cardMap, playerCard, dealerCard)) {
+          //     let winImage = document.createElement("img")
+          //     winImage.src = "/img/homer-woohoo.gif";
+          //     console.log('winner: Player. cards are:', playerCard, dealerCard);
+          //     setTimeout(() => {result.append(winImage)},1200);
+          //     setTimeout(() => {winImage.style.display = 'none'},2500);
+          //     //todo set the game.cash amount to current value + currentBet value
+          //     updatBank(true, game.cash, game.currentBet);
+          // } 
+          //     else if (game.checkWinner(cardMap, dealerCard,playerCard)) {
                
-              let loseImage = document.createElement("img")
-              loseImage.src = "/img/homer-d'oh.gif";
-              console.log('winner: Dealer. cards are:', dealerCard,playerCard);
-              setTimeout(() => {result.append(loseImage)},1200);
-              setTimeout(() => {loseImage.style.display = 'none'},2500);
+          //     let loseImage = document.createElement("img")
+          //     loseImage.src = "/img/homer-d'oh.gif";
+          //     console.log('winner: Dealer. cards are:', dealerCard,playerCard);
+          //     setTimeout(() => {result.append(loseImage)},1200);
+          //     setTimeout(() => {loseImage.style.display = 'none'},2500);
                 
-                //todo set the game.cash amount to current value minus currentBet value
-                updatBank(false, game.cash, game.currentBet);
-            }
-                else {
-                  //todo: show overlay for "War" or "Forfeit"
-                  result.textContent = 'War or Forfiet?';
-                  console.log('Draw! cards are:',playerCard, dealerCard);
-                  //todo: on overlay, add listener to "war" to call gotToWar
-                  // game.enterWar();
-                  bettingButtons.style.display = 'none';
-                  playButton.disabled =true;
-                  swal("🤺", "It's a draw! You can double your bet to take on the casino or forfeit half your bet!", "/img/homer-donut.jpeg");
-                  let forfeitButton = document.createElement("button");
-                  forfeitButton.innerText = 'Forfeit';
-                  let warButton = document.createElement("button");
-                  warButton.innerText = 'War';
-                  warForfeitButtons.appendChild(warButton);
-                  warForfeitButtons.appendChild(forfeitButton);
-                  forfeitButton.style.display= 'block';
-                  warButton.style.display= 'block';
+          //       //todo set the game.cash amount to current value minus currentBet value
+          //       updatBank(false, game.cash, game.currentBet);
+          //   }
+          //       else {
+          //         //todo: show overlay for "War" or "Forfeit"
+          //         result.textContent = 'War or Forfiet?';
+          //         console.log('Draw! cards are:',playerCard, dealerCard);
+          //         //todo: on overlay, add listener to "war" to call gotToWar
+          //         // game.enterWar();
+          //         bettingButtons.style.display = 'none';
+          //         playButton.disabled =true;
+          //         swal("DRAW!", "It's a draw! DOUBLE your bet to take on the casino or FORFEIT half your bet", "/img/homer-donut.jpeg");
+          //         let forfeitButton = document.createElement("button");
+          //         forfeitButton.innerText = 'Forfeit';
+          //         let warButton = document.createElement("button");
+          //         warButton.innerText = 'Double';
+          //         warForfeitButtons.appendChild(warButton);
+          //         warForfeitButtons.appendChild(forfeitButton);
+          //         forfeitButton.style.display= 'block';
+          //         warButton.style.display= 'block';
 
+          //         warButton.addEventListener("click", () => {
+          //           gotToWar(game.currentBet, game.cash);
+          //           // console.log('in draw block',game.cash)
+          //         })
+          //}
 
-
-                }
       }
-  
    });
    return;
  }
@@ -150,33 +152,29 @@ function updatBank(result, cash, currentBet) {
           setTimeout(() => {userBank.innerHTML = game.cash},1500);
           return;
 };
-              // setTimeout(() => {result.append(loseImage)},1200);
 
 
-function gotToWar(bet, cash) {
-  // calc. the war bet (2 x currentBet)
-  let wager = 2 * bet;
-  console.log(" Wager:", wager);
-  // check if enough cash to place wager
-  if(cash >= wager) {
-    //set the current bet to the wager
-    game.currentBet = wager;
-    // todo: block other betting
-    // bettingButtons.style.display = 'none';
-
+function gotToWar(currentBet, currentCash) {
+  playButton.disabled = false;
+  console.log('in war block cash:', currentCash)
+  let doubleBet = 2 * currentBet;
+  console.log('previous bet', currentBet)
+  console.log("doubleBet:", doubleBet);
+  if(currentCash >= doubleBet) {
+    game.currentBet = doubleBet;
     console.log("New current Bet:", game.currentBet);
     thisBet.textContent = game.currentBet
-    // console.log('You can go to war');
-    // game.currentBet = 0;
   }
   else {
-    // todo: show error msg is War clicked when not enough cash
-    console.log("Not enough cash. You must forfeit half your bet")
+    // todo: show error msg if DOUBLE  clicked when not enough cash
+    swal("😔", "Not enouh cash to keep playing. You must forfeit half your bet", "/img/homer-donut.jpeg");
+    console.log("Not enough cash. You must forfeit half your bet");
+    game.cash -= game.currentBet / 2;
   }
-  return;
+  return playerCard, dealerCard;
 }
 
-function forfeit(bet) {
+function forfeitButton(bet) {
   // reduce cash by half of original bet
     game.cash -= bet * 0.5;
     userBank.innerHTML = game.cash;

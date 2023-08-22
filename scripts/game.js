@@ -1,22 +1,18 @@
 class Game {
     constructor(deck) {
 
-    // new stuff start
     this.startScreen = document.querySelector("#game-intro");
     this.gameScreen =  document.querySelector("#game-screen");
     this.gameEndScreen =  document.querySelector("#game-end");
     this.warScreen = document.querySelector('.war');
-    // new stuff end
 
-
-        this.deck = deck;
-        this.shuffled = [];
-        // pop the cards already dealt into an array
-        this.dealtCards = [];
-        this.currentBet = 0;
-        this.cash = 100;
+    this.deck = deck;
+    this.shuffled = [];
+    // pop the cards already dealt into an array
+    this.dealtCards = [];
+    this.currentBet = 0;
+    this.cash = 100;
     }
-
 
     startGame() {
         // hide start screen
@@ -24,17 +20,6 @@ class Game {
         // show the game screen
         this.gameScreen.style.display = "block";
     }
-
-    // enterWar() {
-        
-    //     // show the war screen
-    //     this.warScreen.style.display = "block";
-    //      // hide start screen
-    //     this.gameScreen.style.display = "none"; 
-
-    // }
-
-
 
     shuffleDeck() {
         if(!this.deck) {
@@ -67,20 +52,64 @@ class Game {
                     return isValidBet;  
         }
 
-    dealCard(){
-        let x = this.shuffled.shift()
-        console.log(x, "the value of the card")
-        return x
+    dealCard() {
+        return this.shuffled.shift()
     }
 
     checkWinner(cardMap, card1, card2) {
         if(!card1 && !card2 && !cardMap) {
             return undefined;
         }
+        let playerCardValue =  cardMap[card1.split("-")[0]];
+        let dealerCardValue =  cardMap[card2.split("-")[0]];
+
         // console.log('map card 1 value',cardMap[card1.split("-")[0]]) 
         // console.log('map card 2 value',cardMap[card2.split("-")[0]]) 
+        // return cardMap[card1.split("-")[0]] > cardMap[card2.split("-")[0]] ;
 
-        return cardMap[card1.split("-")[0]] > cardMap[card2.split("-")[0]] ;
+        if(playerCardValue > dealerCardValue) {
+            let winner ;
+            let winImage = document.createElement("img")
+            winImage.src = "/img/homer-woohoo.gif";
+            console.log('PLAYER wins -> cards are:', playerCard, dealerCard);
+            setTimeout(() => {result.append(winImage)},1200);
+            setTimeout(() => {winImage.style.display = 'none'},2500);
+            updatBank(true, game.cash, game.currentBet);
+        } 
+            else if (dealerCardValue>playerCardValue) {
+                let loseImage = document.createElement("img")
+                loseImage.src = "/img/homer-d'oh.gif";
+                console.log('DEALER wins - cards are:', playerCard,dealerCard);
+                setTimeout(() => {result.append(loseImage)},1200);
+                setTimeout(() => {loseImage.style.display = 'none'},2500);
+                updatBank(false, game.cash, game.currentBet);
+            }
+                else {
+                console.log('Draw! cards are:',playerCard, dealerCard);
+                // game.enterWar();
+                swal("It's a DRAW!", "DOUBLE your bet to take on the casino or FORFEIT half your bet", "/img/homer-donut.jpeg");
+                bettingButtons.style.display = 'none';
+                playButton.disabled = true;
+
+                let forfeitButton = document.createElement("button");
+                forfeitButton.innerText = 'Forfeit';
+                let warButton = document.createElement("button");
+                warButton.innerText = 'Double';
+                warForfeitButtons.appendChild(warButton);
+                warForfeitButtons.appendChild(forfeitButton);
+                forfeitButton.style.display= 'block';
+                warButton.style.display= 'block';
+
+                warButton.addEventListener("click", () => {
+                const  warResult = gotToWar(game.currentBet, game.cash);
+                console.log('The war result:',warResult);
+                })
+                forfeitButton.addEventListener("click", () => {
+                forfeitButton(game.currentBet);
+                })
+
+            }
+          return;
     }
 
     checkEndGame() {
@@ -89,6 +118,4 @@ class Game {
             return true;
         }
     }
-
-    
 }

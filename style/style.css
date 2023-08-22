@@ -121,7 +121,7 @@ color:  #008CBA
     
 
 }
-#play-forfeit-war:not(:first-child) {
+/* #play-forfeit-war:not(:first-child) {
     color: #f8fafa;
     background: #0099CC; 
     border: 2px solid #0099CC;
@@ -139,7 +139,7 @@ color:  #008CBA
    text-transform: uppercase;
    letter-spacing: .5rem;
    font-weight: 600;
-} 
+}  */
 
 
 #game-intro {
