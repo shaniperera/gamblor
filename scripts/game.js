@@ -1,16 +1,42 @@
 class Game {
     constructor(deck) {
+
+    // new stuff start
+    this.startScreen = document.querySelector("#game-intro");
+    this.gameScreen =  document.querySelector("#game-screen");
+    this.gameEndScreen =  document.querySelector("#game-end");
+    this.warScreen = document.querySelector('.war');
+    // new stuff end
+
+
         this.deck = deck;
         this.shuffled = [];
         // pop the cards already dealt into an array
         this.dealtCards = [];
         this.currentBet = 0;
         this.cash = 100;
-        ;
     }
 
+
+    startGame() {
+        // hide start screen
+        this.startScreen.style.display = "none"; 
+        // show the game screen
+        this.gameScreen.style.display = "block";
+    }
+
+    // enterWar() {
+        
+    //     // show the war screen
+    //     this.warScreen.style.display = "block";
+    //      // hide start screen
+    //     this.gameScreen.style.display = "none"; 
+
+    // }
+
+
+
     shuffleDeck() {
-        console.log("** shuffleDeck called **")
         if(!this.deck) {
             return undefined;
         } 
@@ -22,15 +48,9 @@ class Game {
             .sort((a, b) => a.sort - b.sort)
             // unmap to get the original objects
             .map(({ card }) => card);
-
-            console.log('in shuffle before re-assign',this.deck)
-
             this.shuffled = shuffled;
-
-            console.log('in shuffle after re-assign',this.shuffled)
-
-                return this.shuffled;
-            }
+        }
+        return this.shuffled;
                 
     }
     isValidBet(event) {
@@ -48,7 +68,6 @@ class Game {
         }
 
     dealCard(){
-        console.log("this.shuffled when dealing", this.shuffled)
         let x = this.shuffled.shift()
         console.log(x, "the value of the card")
         return x
@@ -58,16 +77,10 @@ class Game {
         if(!card1 && !card2 && !cardMap) {
             return undefined;
         }
-        // console.log('map card 1 value',cardMap[card1.value]) 
-        // console.log('map card 2 value',cardMap[card2.value]) 
+        // console.log('map card 1 value',cardMap[card1.split("-")[0]]) 
+        // console.log('map card 2 value',cardMap[card2.split("-")[0]]) 
 
-        return cardMap[card1.value] > cardMap[card2.value] ;
-
-        // if(card1 > card2) {
-        //     return card1;
-        // } else if (card2 > card1) {
-        //     return card2;
-        // } return 'draw'
+        return cardMap[card1.split("-")[0]] > cardMap[card2.split("-")[0]] ;
     }
 
     checkEndGame() {

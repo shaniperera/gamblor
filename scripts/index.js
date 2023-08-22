@@ -1,72 +1,23 @@
-// const deck = [
-//   { value: '2', suit: '♥️' },
-//   { value: '2', suit: '♦️' },
-//   { value: '2', suit: '♠️' },
-//   { value: '2', suit: '♣️' },
-//   { value: '3', suit: '♥️' },
-//   { value: '3', suit: '♦️' },
-//   { value: '3', suit: '♠️' },
-//   { value: '3', suit: '♣️' },
-//   { value: '4', suit: '♥️' },
-//   { value: '4', suit: '♦️' },
-//   { value: '4', suit: '♠️' },
-//   { value: '4', suit: '♣️' },
-//   { value: '5', suit: '♣️' },
-//   { value: '5', suit: '♥️' },
-//   { value: '5', suit: '♦️' },
-//   { value: '5', suit: '♠️' },
-//   { value: '6', suit: '♣️' },
-//   { value: '6', suit: '♥️' },
-//   { value: '6', suit: '♦️' },
-//   { value: '6', suit: '♠️' },
-//   { value: '7', suit: '♣️' },
-//   { value: '7', suit: '♥️' },
-//   { value: '7', suit: '♦️' },
-//   { value: '7', suit: '♠️' },
-//   { value: '8', suit: '♣️' },
-//   { value: '8', suit: '♥️' },
-//   { value: '8', suit: '♦️' },
-//   { value: '8', suit: '♠️' },
-//   { value: '9', suit: '♣️' },
-//   { value: '9', suit: '♥️' },
-//   { value: '9', suit: '♦️' },
-//   { value: '9', suit: '♠️' },
-//   { value: '10', suit: '♣️' },
-//   { value: '10', suit: '♥️' },
-//   { value: '10', suit: '♦️' },
-//   { value: '10', suit: '♠️' },
-//   { value: 'J', suit: '♣️' },
-//   { value: 'J', suit: '♥️' },
-//   { value: 'J', suit: '♦️' },
-//   { value: 'J', suit: '♠️' },
-//   { value: 'Q', suit: '♣️' },
-//   { value: 'Q', suit: '♥️' },
-//   { value: 'Q', suit: '♦️' },
-//   { value: 'Q', suit: '♠️' },
-//   { value: 'K', suit: '♣️' },
-//   { value: 'K', suit: '♥️' },
-//   { value: 'K', suit: '♦️' },
-//   { value: 'K', suit: '♠️' },
-//   { value: 'A', suit: '♣️' },
-//   { value: 'A', suit: '♥️' },
-//   { value: 'A', suit: '♦️' },
-//   { value: 'A', suit: '♠️' },
-// ];
+const startButton = document.getElementById("start-button");
+// const game = new Game(buildDeck());
+const newDeck = ["A-S","A-H","A-C","A-D"];
+const game = new Game(newDeck);
+console.log(newDeck);
+startButton.addEventListener("click", function () {
+  game.startGame();
+})
 
-const deck = [
-  { value: '2', suit: '♥️' },
-  { value: '2', suit: '♦️' },
-  { value: '2', suit: '♠️' },
-  { value: '2', suit: '♣️' },
-  { value: '2', suit: '♥️' },
-  { value: '2', suit: '♦️' },
-  { value: '2', suit: '♠️' },
-  { value: '2', suit: '♣️' },
-  { value: '2', suit: '♥️' },
-  { value: '2', suit: '♦️' },
-  { value: '2', suit: '♠️' },
-  { value: '2', suit: '♣️' },
-]
+function buildDeck() {
+  let values = ["A","2","3", "4", "5", "6", "7","8","9","10","J", "Q", "K"];
+  let suits = ["C", "D", "H", "S" ];
+  let deck = [];
+  for(let i =0 ; i < suits.length; i++) {
+    for(let j = 0; j<values.length; j++) {
+      deck.push(values[j]+"-"+suits[i])
+    }
+  }
+  return deck;
+}
 // object literal that maps card values
 const cardMap = {
   "2": 2,
@@ -84,48 +35,30 @@ const cardMap = {
   "A": 14,
 }
 
-const game = new Game(deck);
-// game.shuffleDeck();
-console.log('in game shuffled deck: ',game.shuffleDeck());
+console.log(game.shuffleDeck());
 
 const userBet = document.querySelectorAll('.bet-option'); 
 const thisBet = document.querySelector('#current-bet');
 const userBank = document.querySelector('#bank');
 
-// console.log('Global scope type of "game.cash":', typeof game.cash); // number
-// console.log('Global scope type of "game.currentBet":', typeof game.currentBet); // number
-
 userBet.forEach(bet => {
   bet.addEventListener("click", event => {
     
     if(game.isValidBet(event)) {
-      // console.log('In 1st ifStatement scope type of "game.currentBet":', typeof game.currentBet, game.currentBet); // string
-      console.log("Ready to Play")
       thisBet.textContent = game.currentBet;
-
-      // console.log('Display the bet to user:',thisBet.innerHTML);
       // todo: show game screen/ hide or disable betting buttons(?)
     }
     else {
-      console.log('Not enough cash 😭');
-      thisBet.textContent = game.currentBet;
-      // todo: Show error prompt "Not enought cash to bet"
+      swal("😫", "You don't have enough donuts to play 🍩");
+      thisBet.textContent = game.currentBet;      
     }
-    // original 
-    // if(game.cash >= event.target.innerHTML) {
-    //   console.log("Play")
-    //   console.log(game.dealCard());
-    //   game.currentBet=event.target.innerHTML;
-    //   thisBet.textContent=game.currentBet;
-    
-    // }
-    //   else 
-    //     console.log('No go 😭');
       })
 });
 
 const playButton = document.querySelector('.play');
 const result = document.querySelector('.result');
+const bettingButtons = document.querySelector('.bet-options')
+const warForfeitButtons = document.querySelector('#play-forfeit-war')
 let playerCard;
 let dealerCard;
 
@@ -136,39 +69,69 @@ function userPlay() {
      // check if bet has been made and is valid
     if(game.currentBet === 0) {
       //todo show prompt to select valid bet first to play
-      console.log('Must BET first')
+      swal("🍩🍩🍩🍩🍩", "Select a bet first!", "/img/homer-donut.jpeg");
     } 
       else {
-      console.log('**** in plaaaayyyyyy ****')
       // deal the player card and push to dealt cards array
+      let cardImgPlayer = document.createElement("img");
       playerCard = game.dealCard();
+      cardImgPlayer.src = "/img/" + playerCard + ".png";
+
+       setTimeout(() => {
+        document.querySelector(".player-card").replaceChildren(cardImgPlayer)
+      }, "400");
       game.dealtCards.push(playerCard);
+
       // deal the dealer card and push to dealt cardsarray
+      let cardImgDealer = document.createElement("img");
       dealerCard = game.dealCard();
+      cardImgDealer.src = "/img/" + dealerCard + ".png";
+
+      setTimeout(() => {
+        document.querySelector(".dealer-card").replaceChildren(cardImgDealer)
+      }, "800");
       game.dealtCards.push(dealerCard);
-      // console.log(game.dealtCards);
-      console.log('dealt cards', game.dealtCards);
   
           if(game.checkWinner(cardMap, playerCard, dealerCard)) {
-              result.textContent = 'Player Wins 🍩';
+              let winImage = document.createElement("img")
+              winImage.src = "/img/homer-woohoo.gif";
               console.log('winner: Player. cards are:', playerCard, dealerCard);
+              setTimeout(() => {result.append(winImage)},1200);
+              setTimeout(() => {winImage.style.display = 'none'},2500);
               //todo set the game.cash amount to current value + currentBet value
-              // console.log('In 2nd ifStatment type of "game.cash":', typeof game.cash);
-              // console.log('In 2nd ifStatment type of "game.currentBet":', typeof game.currentBet);
               updatBank(true, game.cash, game.currentBet);
           } 
               else if (game.checkWinner(cardMap, dealerCard,playerCard)) {
-                result.textContent = 'Casino Wins 😫'
-                console.log('winner: Dealer. cards are:', dealerCard,playerCard);
+               
+              let loseImage = document.createElement("img")
+              loseImage.src = "/img/homer-d'oh.gif";
+              console.log('winner: Dealer. cards are:', dealerCard,playerCard);
+              setTimeout(() => {result.append(loseImage)},1200);
+              setTimeout(() => {loseImage.style.display = 'none'},2500);
+                
                 //todo set the game.cash amount to current value minus currentBet value
                 updatBank(false, game.cash, game.currentBet);
             }
                 else {
                   //todo: show overlay for "War" or "Forfeit"
                   result.textContent = 'War or Forfiet?';
-                  console.log('Draw- cards are:',playerCard, dealerCard);
+                  console.log('Draw! cards are:',playerCard, dealerCard);
                   //todo: on overlay, add listener to "war" to call gotToWar
-                  forfeit(game.currentBet);
+                  // game.enterWar();
+                  bettingButtons.style.display = 'none';
+                  playButton.disabled =true;
+                  swal("🤺", "It's a draw! You can double your bet to take on the casino or forfeit half your bet!", "/img/homer-donut.jpeg");
+                  let forfeitButton = document.createElement("button");
+                  forfeitButton.innerText = 'Forfeit';
+                  let warButton = document.createElement("button");
+                  warButton.innerText = 'War';
+                  warForfeitButtons.appendChild(warButton);
+                  warForfeitButtons.appendChild(forfeitButton);
+                  forfeitButton.style.display= 'block';
+                  warButton.style.display= 'block';
+
+
+
                 }
       }
   
@@ -178,15 +141,17 @@ function userPlay() {
  // takes result of checkWinner and updates the bank accordingly
 function updatBank(result, cash, currentBet) {
   game.currentBet = 0;
-  thisBet.textContent = game.currentBet;
+  setTimeout(() => {thisBet.textContent = game.currentBet},1500);
   if(result) {
     game.cash = Number(cash) + Number(currentBet);
       } else {
           game.cash = Number(cash) - Number(currentBet);
         }
-          userBank.innerHTML = game.cash;
+          setTimeout(() => {userBank.innerHTML = game.cash},1500);
           return;
 };
+              // setTimeout(() => {result.append(loseImage)},1200);
+
 
 function gotToWar(bet, cash) {
   // calc. the war bet (2 x currentBet)
@@ -197,11 +162,12 @@ function gotToWar(bet, cash) {
     //set the current bet to the wager
     game.currentBet = wager;
     // todo: block other betting
+    // bettingButtons.style.display = 'none';
+
     console.log("New current Bet:", game.currentBet);
     thisBet.textContent = game.currentBet
     // console.log('You can go to war');
     // game.currentBet = 0;
-
   }
   else {
     // todo: show error msg is War clicked when not enough cash
@@ -209,6 +175,7 @@ function gotToWar(bet, cash) {
   }
   return;
 }
+
 function forfeit(bet) {
   // reduce cash by half of original bet
     game.cash -= bet * 0.5;
@@ -219,7 +186,6 @@ function forfeit(bet) {
     console.log('You have decided to forfeit');
   return;
 }
-
 
 // todo: Steps:
 // 1. Load the game screen
@@ -233,4 +199,3 @@ function forfeit(bet) {
 //     b. else decrease bank by 0.5 of original bet
 // 6. Check endGame () 
 //     a. if true, show restart game
-
