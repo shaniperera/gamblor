@@ -5,35 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gamblor</title>
     <link rel="stylesheet" href="style/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
 </head>
 <body>
-  <div>
+  <!-- #game-intro is initially shown on the game start screen -->
+  <div id="game-intro">
     <h1>gamblor</h1>
+    <p>Help Marge win as many donuts as possible!</p>
+    <ul>
+      <li>How to play:</li>
+      <li>1. Place a bet</li>
+      <li>2. If your card is higher, you win!</li>
+      <li>3. If you 'draw', go to ''war' with the casino by doubleing your bet</li>
+      </ul>
+      <button id="start-button">Let's Play!</button>
+    </ul>
   </div>
-  <div id="score">
-    <h2>Score</h2>
-    <p>🍩 : <span id="bank">100</span></p>
-    <p>🃏Current Bet:<span id="current-bet">0</span></p>
+  <header class="header">
+    <h1>gamblor</h1>
+  </header>
+  <div id="game-container">
+    <div class="result-score">
+      <div>
+        <h2 class='result'></h2>
+      </div>
+      <div  id="score"> 
+        <h2>Score</h2>
+        <h3>🍩 : <span id="bank">100</span></h3>
+        <h3>Current Bet: <span id="current-bet">0</span></h3>
+      </div>
+    </div>
+    <div id="playing-decks">
+    <img src="./img/marge-gamble-2.png" alt="marge gambling">
+    <div class="player-card deck">
+      <img id='hidden' src="img/BACK.png" alt="">
+    </div>
+    <div class="dealer-card deck">
+      <img id='hidden' src="img/BACK.png" alt="">
+    </div>
+      <img src="./img/burns-casino.png" alt="marge gambling">
   </div>
-  <div id="casino-table"></div>
-  <h3 class = 'result'></h3>
-  <div id="playing-decks">
-    <img src="./img/marge-gamble.png" alt="marge gambling">
-    <div class=".player-card deck"></div>
-    <div class=".computer-card deck"></div>
-    <img src="./img/burns-casino.png" alt="marge gambling">
+  <div class="war">
+    <p>this is the war screen</p>
   </div>
-  <div class="play">
-    <button>Play</button>
   </div>
-  <div class="bet-options">
-    <button class="bet-option">10</button>
-    <button class="bet-option">20</button>
-    <button class="bet-option">50</button>
-    <button class="bet-option">100</button>
-  </div>
-  
+    <div>
+      <div id="play-forfeit-war">
+        <button class="play">Play</button>
+      </div>
+      <div class="bet-options">
+      <p>Select a bet to play:</p>
+      <button class="bet-option">10</button>
+      <button class="bet-option">25</button>
+      <button class="bet-option">50</button>
+      <button class="bet-option">75</button>
+      <button class="bet-option">100</button>
+    </div>
+    <!-- #game-screen is initially hidden using CSS style display: none -->
+    <div id="game-screen"></div>
+  </div>  
   <script src="./scripts/game.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
