@@ -2,10 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 body {
-
     font-family: 'Annie Use Your Telescope';
 }
 
@@ -14,60 +14,60 @@ h1 {
     text-align: center;
 }
 .result {
-    /* font-size: 4em; */
-font-weight: 400;
-color: rgb(80, 80, 230);
-align-items: center;
-padding:0;
-margin:0 auto;
-
+/* font-weight: 400; */
+/* color: rgb(80, 80, 230); */
+/* align-items: center; */
+/* padding:20px; */
+/* margin:0 auto; */
 }
 .result-score {
-    display:flex;
-    justify-content: space-between;
+     display:flex; 
+     justify-content: space-between;
 }
 
 #score {
-    background-color: antiquewhite;
-    font-size: 1.2em;
-    padding: 4px;
-    width:145px;
-    height:150px;
-    margin: 0px;
+    background-color: rgb(251, 240, 228);
+    font-size: 1.5em;
+    padding: 10px 15px;
+} 
+.player-card {
+    display: flex;
 }
 
 #playing-decks {
     display: flex;
     justify-content: space-evenly;
-    /* padding: 10px; */
-    /* margin:10px; */
-    align-items: center;
-
+    /* align-items: center; */
+    /* gap: 10px; */
 }
 
  #playing-decks > img {
     width:30%;
     height:120%;
     border-radius: 50px;
-
 } 
 
 .deck img{
-    height: 250px; 
-     width: 175px;   
+    height: 350px; 
+     width: 240px;   
     margin:10px; 
-    /* position:fixed; */
-
-} 
+    border-radius: 5px;
+ } 
 
 .bet-options {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* padding: 10px; */
+    padding: 10px;
     margin:0px;
     font-size: 1.5em;
     align-items: center;
+}
+.bet-options p {
+    font-size: 1.5em;
+    font-weight: 900;
+    background:white;
+    padding: 10px
 }
 
 .bet-option {
@@ -77,51 +77,57 @@ margin:0 auto;
      border-radius: 6px; 
       padding: 16px 40px;      
       text-align: center;      
-      /* display: inline-block; */
+      display: inline-block;
       font-size: 16px;      
       margin: 2px 2px;     
        transition-duration: 0.5s;      
       cursor: pointer;      
       text-decoration: none;   
-        font-weight: 600;
-
+    font-weight: 600;
 }
 
 .bet-option:hover {
 background-color: #008CBA;
 color: white;
 }
+.bet-option:focus {
+    background-color:#0099CC;
+color: white;
+
+
+}
 .play:hover, #start-button:hover {
 background-color:white;
 color:  #008CBA
 }
 
-#play-forfeit-war button , #start-button {
+#start-button ,  #restart-button{
+    display: flex;
     color: #f8fafa;
     background: #0099CC; 
     border: 2px solid #0099CC;
     border-radius: 6px; 
     padding: 16px 100px;      
     text-align: center;
+    align-content: center;
     justify-content: center;      
-    display: block;
-    font-size: 16px;      
     margin: 5px 2px;     
     transition-duration: 0.4s;      
     cursor: pointer;      
-    width: 100%;
-   font-size: 1.5em;
-   text-transform: uppercase;
-   letter-spacing: .5rem;
-   font-weight: 600;
-}
-#start-button {
     width: 60%;
-    margin: 20px auto;
-    
-
+   font-size: 1.4em;
+   text-transform: uppercase;
+   letter-spacing: .5rem;
+   font-weight: 600;
 }
-/* #play-forfeit-war:not(:first-child) {
+
+
+#play-double {
+    display: flex;
+    justify-content: space-around;
+}
+
+#play-double button {
     color: #f8fafa;
     background: #0099CC; 
     border: 2px solid #0099CC;
@@ -129,21 +135,42 @@ color:  #008CBA
     padding: 16px 100px;      
     text-align: center;
     justify-content: center;      
-    display: block;
     font-size: 16px;      
     margin: 5px 2px;     
     transition-duration: 0.4s;      
     cursor: pointer;      
- width: 50%; 
-   font-size: 1.5em;
-   text-transform: uppercase;
-   letter-spacing: .5rem;
-   font-weight: 600;
-}  */
-
+    width: 100%; 
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: .4rem;
+    font-weight: 600;
+} 
 
 #game-intro {
-display: display;
+    display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  background-image: url('/img/background.png');
+  background-size:cover;
+  /* justify-content: center; */
+  /* flex-direction: column; */
+}
+
+#game-container {
+    display:none;
+    width: 100vw;
+  padding: 5px;
+  justify-content: center;
+  background-image: url('/img/donut-background.png');
+
+/* background-repeat: repeat-x; */
+  /* background-size: contain;  */
+}
+
+#game-end {
+    display: none;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -152,37 +179,13 @@ display: display;
   background-size:cover;
   justify-content: center;
   flex-direction: column;
-
 }
 
-#game-container {
-/* width: 100vw; */
-  padding: 5px;
-  justify-content: center;
-  background-image: url('/img/background2.png');
-/* background-repeat: repeat-x; */
-  background-size: contain; 
+#game-intro img {
+    width: 260px;
+    height:200px;
+    border-radius: 3em;;
+ /* background-color: transparent; */
+ /* background: none; */
+
 }
-/* // new stuff  */
-/* #game-screen {
-  display: none;
-  align-content: center;
-  padding: 20px;
-  overflow: hidden; 
-  position: relative;
-} */
-
-
-
-/* 
-body button {
-  font-size: 30px;
-  background-color: #679983;
-  color: #fff;
-  padding: 20px 40px;
-  border: 0;
-box-shadow: 0; 
-  border-radius: 5px;
-  margin-bottom: 20px;
-} 
-*/

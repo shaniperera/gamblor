@@ -1,14 +1,10 @@
 class Game {
     constructor(deck) {
-
     this.startScreen = document.querySelector("#game-intro");
-    this.gameScreen =  document.querySelector("#game-screen");
     this.gameEndScreen =  document.querySelector("#game-end");
-    this.warScreen = document.querySelector('.war');
-
+    this.gameContainer =  document.querySelector("#game-container");
     this.deck = deck;
     this.shuffled = [];
-    // pop the cards already dealt into an array
     this.dealtCards = [];
     this.currentBet = 0;
     this.cash = 100;
@@ -17,8 +13,9 @@ class Game {
     startGame() {
         // hide start screen
         this.startScreen.style.display = "none"; 
+        this.gameEndScreen.style.display = "none";
         // show the game screen
-        this.gameScreen.style.display = "block";
+        this.gameContainer.style.display = "block";      
     }
 
     shuffleDeck() {
@@ -35,9 +32,43 @@ class Game {
             .map(({ card }) => card);
             this.shuffled = shuffled;
         }
-        return this.shuffled;
-                
+        return this.shuffled;        
     }
+    
+    dealCard() {
+        return this.shuffled.shift()
+    }
+
+ renderCard() {
+  // deal the player card and push to dealt cards array
+  let cardImgPlayer = document.createElement("img");
+  playerCard = game.dealCard();
+  cardImgPlayer.src = "/img/" + playerCard + ".png";
+// target.parentNode.insertBefore(elem, target.nextSibling)
+
+    setTimeout(() => {
+    document.querySelector(".player-card #hidden").replaceWith(cardImgPlayer)
+  }, "350");
+    game.dealtCards.push(playerCard);
+
+  // deal the dealer card and push to dealt cardsarray
+  let cardImgDealer = document.createElement("img");
+  dealerCard = game.dealCard();
+  cardImgDealer.src = "/img/" + dealerCard + ".png";
+
+    setTimeout(() => {
+      document.querySelector(".dealer-card #hidden").replaceWith(cardImgDealer)
+    }, "500");
+    game.dealtCards.push(dealerCard);
+
+    if(game.dealtCards.length === 52) {
+      game.deck= game.dealtCards;
+      console.log(game.shuffleDeck());
+    }
+    game.checkWinner(cardMap, playerCard, dealerCard); 
+    return;
+}
+    
     isValidBet(event) {
             let isValidBet = false;
             if(this.cash >= event.target.innerHTML) {
@@ -52,10 +83,6 @@ class Game {
                     return isValidBet;  
         }
 
-    dealCard() {
-        return this.shuffled.shift()
-    }
-
     checkWinner(cardMap, card1, card2) {
         if(!card1 && !card2 && !cardMap) {
             return undefined;
@@ -63,59 +90,47 @@ class Game {
         let playerCardValue =  cardMap[card1.split("-")[0]];
         let dealerCardValue =  cardMap[card2.split("-")[0]];
 
-        // console.log('map card 1 value',cardMap[card1.split("-")[0]]) 
-        // console.log('map card 2 value',cardMap[card2.split("-")[0]]) 
-        // return cardMap[card1.split("-")[0]] > cardMap[card2.split("-")[0]] ;
+        bettingButtons.style.display = "flex";
+        doubleButton.style.display = "none";
 
-        if(playerCardValue > dealerCardValue) {
-            let winner ;
+        if(playerCardValue > dealerCardValue) {   
             let winImage = document.createElement("img")
             winImage.src = "/img/homer-woohoo.gif";
             console.log('PLAYER wins -> cards are:', playerCard, dealerCard);
-            setTimeout(() => {result.append(winImage)},1200);
+            setTimeout(() => {result.append(winImage)},1000);
             setTimeout(() => {winImage.style.display = 'none'},2500);
             updatBank(true, game.cash, game.currentBet);
-        } 
-            else if (dealerCardValue>playerCardValue) {
-                let loseImage = document.createElement("img")
-                loseImage.src = "/img/homer-d'oh.gif";
-                console.log('DEALER wins - cards are:', playerCard,dealerCard);
-                setTimeout(() => {result.append(loseImage)},1200);
-                setTimeout(() => {loseImage.style.display = 'none'},2500);
-                updatBank(false, game.cash, game.currentBet);
-            }
+            } else if (dealerCardValue > playerCardValue) 
+                {
+                    let loseImage = document.createElement("img")
+                    loseImage.src = "/img/homer-doh.gif";
+                    console.log('DEALER wins - cards are:', playerCard,dealerCard);
+                    setTimeout(() => {result.append(loseImage)},1000);
+                    setTimeout(() => {loseImage.style.display = 'none'},2500);
+                    updatBank(false, game.cash, game.currentBet);
+                }
                 else {
-                console.log('Draw! cards are:',playerCard, dealerCard);
-                // game.enterWar();
-                swal("It's a DRAW!", "DOUBLE your bet to take on the casino or FORFEIT half your bet", "/img/homer-donut.jpeg");
-                bettingButtons.style.display = 'none';
-                playButton.disabled = true;
+                    console.log('Draw! cards are:',playerCard, dealerCard);
+ 
+                     setTimeout(() => {swal("It's a DRAW!", "DOUBLE your bet to win big on th next round or PLAY with current bet.", "/img/homer-donut.jpeg")},1000);
 
-                let forfeitButton = document.createElement("button");
-                forfeitButton.innerText = 'Forfeit';
-                let warButton = document.createElement("button");
-                warButton.innerText = 'Double';
-                warForfeitButtons.appendChild(warButton);
-                warForfeitButtons.appendChild(forfeitButton);
-                forfeitButton.style.display= 'block';
-                warButton.style.display= 'block';
+                    doubleButton.addEventListener("click", () => {
+                    doubleBet(game.currentBet, game.cash);
+                    });
 
-                warButton.addEventListener("click", () => {
-                const  warResult = gotToWar(game.currentBet, game.cash);
-                console.log('The war result:',warResult);
-                })
-                forfeitButton.addEventListener("click", () => {
-                forfeitButton(game.currentBet);
-                })
-
+                    bettingButtons.style.display = "none";
+                    doubleButton.style.display = "block";
             }
-          return;
+        return;
     }
 
-    checkEndGame() {
-        // end game when cash left is less than min. bet
-        if (this.cash < 10) {
-            return true;
-        }
+    endGame() {
+    if (game.cash < 10) {
+        swal("🍩🍩🍩", "You don't have enough the min. 10 🍩 to keep playing","/img/end-game.png ");
+        // end game when less than min. bet
+        this.gameEndScreen.style.display = "block";
+        this.gameContainer.style.display = "none";
+        }      
     }
+    
 }
