@@ -1,10 +1,10 @@
 function buildDeck() {
-  let values = ["A","2","3", "4", "5", "6", "7","8","9","10","J", "Q", "K"];
-  let suits = ["C", "D", "H", "S" ];
+  let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+  let suits = ["C", "D", "H", "S"];
   let deck = [];
-  for(let i =0 ; i < suits.length; i++) {
-    for(let j = 0; j < values.length; j++) {
-      deck.push(values[j]+"-"+suits[i])
+  for (let i = 0; i < suits.length; i++) {
+    for (let j = 0; j < values.length; j++) {
+      deck.push(values[j] + "-" + suits[i])
     }
   }
   return deck;
@@ -28,27 +28,25 @@ const cardMap = {
 const startButton = document.getElementById("start-button");
 const resartButrron = document.getElementById("restart-button");
 const game = new Game(buildDeck());
-// const newDeck = ["A-S","A-H","A-C","10-D","A-D","A-H","A-C","5-D","A-S","A-H","A-C","A-D","A-S","A-H","4-C","5-D"];
-// const game = new Game(newDeck);
 
 startButton.addEventListener("click", function () {
   game.startGame();
 })
 
-game.shuffleDeck();
+console.log(game.shuffleDeck());
 
-const userBet = document.querySelectorAll('.bet-option'); 
+const userBet = document.querySelectorAll('.bet-option');
 const thisBet = document.querySelector('#current-bet');
 const userBank = document.querySelector('#bank');
 
 userBet.forEach(bet => {
   bet.addEventListener("click", event => {
-    if(game.isValidBet(event)) {
+    if (game.isValidBet(event)) {
       thisBet.textContent = game.currentBet;
     }
     else {
-      swal("🍩🍩🍩", "Awww.. not enough to bet", '/img/homer-not-enough-donuts.png');
-      thisBet.textContent = game.currentBet;      
+      swal("🍩🍩🍩", "Awww.. not enough to bet, choose a smaller amount", '/img/homer-not-enough-donuts.png');
+      thisBet.textContent = game.currentBet;
     }
   })
 });
@@ -69,44 +67,45 @@ userPlay();
 
 function userPlay() {
   playButton.addEventListener("click", () => {
-     // check if bet has been made and is valid
-    if(game.currentBet === 0) {
+    // check if bet has been made and is valid
+    if (game.currentBet === 0) {
       swal("🍩🍩🍩", "Select a bet first!", "/img/homer-donut.jpeg");
-    } 
-      else {
-        game.renderCard();
-      }
-   });
-   return;
- }
-
-
- // takes result of checkWinner and updates the bank accordingly
+    }
+    else {
+      game.renderCard();
+    }
+  });
+  return;
+}
+// takes result of checkWinner and updates the bank accordingly
 function updatBank(result, cash, currentBet) {
   game.currentBet = 0;
-  setTimeout(() => {thisBet.textContent = game.currentBet},1500);
-  if(result) {
+  setTimeout(() => { thisBet.textContent = game.currentBet }, 1500);
+  if (result) {
     game.cash = Number(cash) + Number(currentBet);
-      } else {
-          game.cash = Number(cash) - Number(currentBet);
-          game.endGame();
+    userBank.style.color = 'green';
+    game.endGame();
 
-        }
-          setTimeout(() => {userBank.innerHTML = game.cash},1500);
-          return;
+  } else {
+    game.cash = Number(cash) - Number(currentBet);
+    game.endGame();
+    userBank.style.color = 'red';
+  }
+  setTimeout(() => { userBank.innerHTML = game.cash }, 1500);
+  return;
 };
 
 function doubleBet(currentBet, currentCash) {
-    console.log('in war block cash:', currentCash)
-    let doubleBet = 2 * currentBet;
-    console.log('previous bet', currentBet)
-    console.log("doubleBet:", doubleBet);
-    if(currentCash >= doubleBet) {
+  console.log('in war block cash:', currentCash)
+  let doubleBet = 2 * currentBet;
+  console.log('previous bet', currentBet)
+  console.log("doubleBet:", doubleBet);
+  if (currentCash >= doubleBet) {
     game.currentBet = doubleBet;
     console.log("New current Bet:", game.currentBet);
     thisBet.textContent = game.currentBet
     game.renderCard();
-  } 
+  }
   else {
     swal("😔", "You don't have enough 🍩 to double your bet.", "/img/homer-donut.jpeg");
   }
@@ -114,8 +113,8 @@ function doubleBet(currentBet, currentCash) {
 }
 
 resartButrron.addEventListener("click", function () {
-    location.reload()
-  });
+  location.reload()
+});
 
 
 // todo: Steps:
