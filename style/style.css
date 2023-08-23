@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 body {
@@ -10,25 +10,69 @@ body {
 }
 
 h1 {
-    font-size: 3.5em;
+    font-size: 4em;
     text-align: center;
 }
-.result {
-/* font-weight: 400; */
-/* color: rgb(80, 80, 230); */
-/* align-items: center; */
-/* padding:20px; */
-/* margin:0 auto; */
+
+#game-intro {
+display: inline-block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  background-image: url('/img/background.png');
+  background-size:cover;
 }
+
+#game-intro p{
+    text-align: center;
+    font-size: 1.5em;
+    padding: 30px;
+    /* text-decoration: none; */
+    list-style: none;
+    font-weight: 800;  
+}
+
+#game-intro ul{
+    text-align: center;
+    font-size: 1.7em;
+    padding: 30px;
+    list-style: none;
+    font-weight: 800;
+    background-color: antiquewhite;
+}
+#game-end p {
+     text-align: center;
+    font-size: 2em;
+    padding: 30px;
+    list-style: none;
+    font-weight: 800;
+    background-color: antiquewhite;
+}
+
+#game-container {
+    display:none;
+    width: 100vw;
+  padding: 5px;
+  justify-content: center;
+  background-image: url('/img/donut-background.png');
+}
+
 .result-score {
      display:flex; 
-     justify-content: space-between;
+     justify-content:center;
+     
+}
+.result {
+margin-left: auto;
 }
 
 #score {
     background-color: rgb(251, 240, 228);
-    font-size: 1.5em;
-    padding: 10px 15px;
+    font-size: 1.3em;
+    /* padding: 10px 15px; */
+    margin-left: auto;
+
 } 
 .player-card {
     display: flex;
@@ -36,9 +80,7 @@ h1 {
 
 #playing-decks {
     display: flex;
-    justify-content: space-evenly;
-    /* align-items: center; */
-    /* gap: 10px; */
+    justify-content: center;
 }
 
  #playing-decks > img {
@@ -96,31 +138,28 @@ color: white;
 
 
 }
-.play:hover, #start-button:hover {
+.play:hover, #start-button:hover, #restart-button:hover {
 background-color:white;
 color:  #008CBA
 }
 
 #start-button ,  #restart-button{
-    display: flex;
+    display:block; 
+    margin: 50px auto;
+    justify-content: center;  
     color: #f8fafa;
     background: #0099CC; 
     border: 2px solid #0099CC;
     border-radius: 6px; 
     padding: 16px 100px;      
-    text-align: center;
-    align-content: center;
-    justify-content: center;      
-    margin: 5px 2px;     
     transition-duration: 0.4s;      
     cursor: pointer;      
-    width: 60%;
+    width: 50%;
    font-size: 1.4em;
    text-transform: uppercase;
    letter-spacing: .5rem;
-   font-weight: 600;
+   font-weight: 600;    
 }
-
 
 #play-double {
     display: flex;
@@ -146,29 +185,6 @@ color:  #008CBA
     font-weight: 600;
 } 
 
-#game-intro {
-    display: block;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  background-image: url('/img/background.png');
-  background-size:cover;
-  /* justify-content: center; */
-  /* flex-direction: column; */
-}
-
-#game-container {
-    display:none;
-    width: 100vw;
-  padding: 5px;
-  justify-content: center;
-  background-image: url('/img/donut-background.png');
-
-/* background-repeat: repeat-x; */
-  /* background-size: contain;  */
-}
-
 #game-end {
     display: none;
   position: fixed;
@@ -179,13 +195,4 @@ color:  #008CBA
   background-size:cover;
   justify-content: center;
   flex-direction: column;
-}
-
-#game-intro img {
-    width: 260px;
-    height:200px;
-    border-radius: 3em;;
- /* background-color: transparent; */
- /* background: none; */
-
 }

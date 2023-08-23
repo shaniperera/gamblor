@@ -125,12 +125,13 @@ class Game {
     }
 
     endGame() {
-    if (game.cash < 10) {
+    if (game.cash === 0) {
         swal("🍩🍩🍩", "You don't have enough the min. 10 🍩 to keep playing","/img/end-game.png ");
         // end game when less than min. bet
         this.gameEndScreen.style.display = "block";
         this.gameContainer.style.display = "none";
-        }      
+        } 
+ 
     }
     
 }

@@ -26,6 +26,7 @@ const cardMap = {
   "A": 14,
 }
 const startButton = document.getElementById("start-button");
+const resartButrron = document.getElementById("restart-button");
 const game = new Game(buildDeck());
 // const newDeck = ["A-S","A-H","A-C","10-D","A-D","A-H","A-C","5-D","A-S","A-H","A-C","A-D","A-S","A-H","4-C","5-D"];
 // const game = new Game(newDeck);
@@ -112,6 +113,10 @@ function doubleBet(currentBet, currentCash) {
   return;
 }
 
+resartButrron.addEventListener("click", function () {
+    location.reload()
+  });
+
 
 // todo: Steps:
 // 1. Load the game screen
@@ -123,6 +128,7 @@ function doubleBet(currentBet, currentCash) {
 // 5. If draw, show 'war' option: double original bet OR forfeit 0.5 of bet
 //     a. if bank >= 2X bet, allow 'war'
 //     b. else decrease bank by 0.5 of original bet
+
 // 6. Check endGame () 
 //     a. if true, show restart game
 // sound on win or lose round

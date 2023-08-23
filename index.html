@@ -8,28 +8,24 @@
     <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
 </head>
 <body>
-  <!-- #game-intro is initially shown on the game start screen -->
-  <div id="game-intro">
-    <h1>gamblor</h1>
-    <p>Help Marge win as many donuts as possible!</p>
-    <ul>
-      <li>How to play:</li>
-      <li>1. Place a bet</li>
-      <li>2. If your card is higher, you win!</li>
-      <li>3. If you 'draw', go to ''war' with the casino by doubleing your bet</li>
-      </ul>
-      <button id="start-button">Let's Play!</button>
-    </ul>
-    <!-- <img src="./img/marge-cover.png" alt=""> -->
-  </div>
-  <header class="header">
-    <h1>gamblor</h1>
+    <header class="header">
+    <h1>gamblor!!</h1>
   </header>
+  <div id="game-intro">
+    <ul> 
+      <p>Help Marge play agingst Mr. Burns' casino to win as many donuts as possible! </p>
+      <li>How to play:</li>
+      <li>1. Place a bet and click 'PLAY' to deal the cards</li>
+      <li>2. Higher card wins</li>
+      <li>3. If you 'draw', 'DOUBLE' your bet to win more or 'PLAY' your original bet
+      </li>
+    </ul> 
+    <button id="start-button">Start! 🍩 </button>
+  </div>
+
   <div id="game-container">
     <div class="result-score">
-      <div>
-        <h2 class='result'></h2>
-      </div>
+      <h2 class='result'></h2>
       <div  id="score"> 
         <h2>Score</h2>
         <h3>🍩 : <span id="bank">100</span></h3>
@@ -56,16 +52,17 @@
     <div class="bet-options">
       <p>⤴ Select a bet to play:</p>
       <button class="bet-option">10</button>
-      <button class="bet-option">25</button>
+      <button class="bet-option">20</button>
       <button class="bet-option">50</button>
-      <button class="bet-option">75</button>
+      <button class="bet-option">70</button>
       <button class="bet-option">100</button>
     </div>
   </div>  
   </div>
  <div id="game-end">
-   <p>You lose!</p>
-    <button id="restart-button">Restart</button>
+  <p> GAME OVER! </p>
+   <p> Oh no! You lost all the donuts! Homer gonna be maaaaddd!</p>
+    <button id="restart-button">Play Again</button>
   </div>
   <script src="./scripts/game.js"></script>
   <script src="./scripts/index.js"></script>
