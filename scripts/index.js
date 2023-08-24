@@ -45,7 +45,7 @@ userBet.forEach(bet => {
       thisBet.textContent = game.currentBet;
     }
     else {
-      swal("🍩🍩🍩", "Awww.. not enough to bet, choose a smaller amount", '/assets/img/homer-not-enough-donuts.png');
+      swal("🍩🍩🍩", "Awww.. not enough to bet, choose a smaller amount", './assets/img/homer-not-enough-donuts.png');
       thisBet.textContent = game.currentBet;
     }
   })
@@ -69,7 +69,7 @@ function userPlay() {
   playButton.addEventListener("click", () => {
     // check if bet has been made and is valid
     if (game.currentBet === 0) {
-      swal("🍩🍩🍩", "Select a bet first!", "/assets/img/homer-donut.jpeg");
+      swal("🍩🍩🍩", "Select a bet first!", "./assets/img/homer-donut.jpeg");
     }
     else {
       game.renderCard();
@@ -107,7 +107,7 @@ function doubleBet(currentBet, currentCash) {
     game.renderCard();
   }
   else {
-    swal("😔", "You don't have enough 🍩 to double your bet.", "/assets/img/homer-donut.jpeg");
+    swal("😔", "You don't have enough 🍩 to double your bet.", "./assets/img/homer-donut.jpeg");
   }
   return;
 }

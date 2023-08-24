@@ -97,7 +97,7 @@ class Game {
 
         if (playerCardValue > dealerCardValue) {
             let winImage = document.createElement("img")
-            winImage.src = "/assets/img/homer-wins2.gif";
+            winImage.src = "./assets/img/homer-wins2.gif";
 
             setTimeout(() => { result.append(winImage) }, 1000);
             setTimeout(() => { winImage.style.display = 'none' }, 2500);
