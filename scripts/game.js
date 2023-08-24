@@ -43,7 +43,7 @@ class Game {
         // deal the player card and push to dealt cards array
         let cardImgPlayer = document.createElement("img");
         playerCard = game.dealCard();
-        cardImgPlayer.src = "/img/" + playerCard + ".png";
+        cardImgPlayer.src = "/assets/img/" + playerCard + ".png";
         cardImgPlayer.id = "player-hidden";
         cardImgPlayer.style.transform = 'rotate(-5deg)';
         setTimeout(() => {
@@ -54,7 +54,7 @@ class Game {
         // deal the dealer card and push to dealt cardsarray
         let cardImgDealer = document.createElement("img");
         dealerCard = game.dealCard();
-        cardImgDealer.src = "/img/" + dealerCard + ".png";
+        cardImgDealer.src = "/assets/img/" + dealerCard + ".png";
         cardImgDealer.id = "dealer-hidden"
         cardImgDealer.style.transform = 'rotate(5deg)';
 
@@ -97,28 +97,28 @@ class Game {
 
         if (playerCardValue > dealerCardValue) {
             let winImage = document.createElement("img")
-            winImage.src = "/img/homer-wins2.gif";
+            winImage.src = "/assets/img/homer-wins2.gif";
 
             setTimeout(() => { result.append(winImage) }, 1000);
             setTimeout(() => { winImage.style.display = 'none' }, 2500);
-            let winAudio = new Audio("/img/homer-woohoo.mp3");
+            let winAudio = new Audio("/assets/homer-woohoo.mp3");
             setTimeout(function () { winAudio.play(); }, 1000)
 
             updatBank(true, game.cash, game.currentBet);
 
         } else if (dealerCardValue > playerCardValue) {
             let loseImage = document.createElement("img")
-            loseImage.src = "/img/homer-dooooh.gif";
+            loseImage.src = "/assets/img/homer-dooooh.gif";
             setTimeout(() => { result.append(loseImage) }, 1000);
             setTimeout(() => { loseImage.style.display = 'none' }, 2500);
-            let loseAudio = new Audio("/img/doh.mp3");
+            let loseAudio = new Audio("/assets/doh.mp3");
             setTimeout(() => { loseImage.style.display = 'none' }, 2500);
             setTimeout(function () { loseAudio.play(); }, 1000)
 
             updatBank(false, game.cash, game.currentBet);
         }
         else {
-            setTimeout(() => { swal("It's a DRAW!", "DOUBLE your bet to win big on the next round or PLAY with current bet.", "/img/burns-sexy.jpg") }, 900);
+            setTimeout(() => { swal("It's a DRAW!", "DOUBLE your bet to win big on the next round or PLAY with current bet.", "/assets/img/burns-sexy.jpg") }, 900);
 
             doubleButton.addEventListener("click", () => {
                 doubleBet(game.currentBet, game.cash);
@@ -132,12 +132,12 @@ class Game {
 
     endGame() {
         if (game.cash === 0) {
-            swal("🙀", "You lost all your donuts to the casino. PLAY AGAIN?", "/img/burns-excellent.gif");
+            swal("🙀", "You lost all your donuts to the casino. PLAY AGAIN?", "/assets/img/burns-excellent.gif");
             // end game when less than min. bet
             this.gameEndScreen.style.display = "block";
             this.gameContainer.style.display = "none";
         } else if (game.cash >= 500) {
-            swal("🥳", "You won!! Press START to play again!", "/img/homer-woohoo.gif");
+            swal("🥳", "You won!! Press START to play again!", "/assets/img/homer-woohoo.gif");
             this.gameEndScreen.style.display = "none";
             this.startScreen.style.display = "block";
         }
