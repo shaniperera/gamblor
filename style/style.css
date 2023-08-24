@@ -2,11 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* overflow: hidden; */
 }
+
+* { min-width: 0; min-height: 0; }
+
 
 body {
     font-family: 'Annie Use Your Telescope';
+}
+
+header {
+ height: 6em;
 }
 
 h1 {
@@ -14,11 +20,18 @@ h1 {
     text-align: center;
 }
 
+#game-container {
+  display:none;
+  padding: 2px;
+  justify-content: center;
+  background-image: url('/img/donut-background.png');
+  height: calc(100vh - 6em);
+}
+
 #game-intro {
 display: inline-block;
-  position: fixed;
+  height: calc(100vh - 6em);
   width: 100%;
-  height: 100%;
   justify-content: center;
   background-image: url('/img/background.png');
   background-size:cover;
@@ -28,7 +41,6 @@ display: inline-block;
     text-align: center;
     font-size: 1.5em;
     padding: 30px;
-    /* text-decoration: none; */
     list-style: none;
     font-weight: 800;  
 }
@@ -50,13 +62,6 @@ display: inline-block;
     background-color: antiquewhite;
 }
 
-#game-container {
-    display:none;
-    width: 100vw;
-  padding: 5px;
-  justify-content: center;
-  background-image: url('/img/donut-background.png');
-}
 
 .result-score {
      display:flex; 
@@ -70,7 +75,7 @@ margin-left: auto;
 #score {
     background-color: rgb(251, 240, 228);
     font-size: 1.3em;
-    /* padding: 10px 15px; */
+    padding: 10px 30px;
     margin-left: auto;
 
 } 
@@ -80,7 +85,7 @@ margin-left: auto;
 
 #playing-decks {
     display: flex;
-    justify-content: center;
+    justify-content: space-around
 }
 
  #playing-decks > img {
@@ -90,8 +95,8 @@ margin-left: auto;
 } 
 
 .deck img{
-    height: 350px; 
-     width: 240px;   
+    height: 17rem; 
+     width: 12rem;   
     margin:10px; 
     border-radius: 5px;
  } 
@@ -100,16 +105,15 @@ margin-left: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 10px;
     margin:0px;
     font-size: 1.5em;
     align-items: center;
 }
 .bet-options p {
-    font-size: 1.5em;
-    font-weight: 900;
+    font-size: 1.2em;
+    font-weight: 500;
     background:white;
-    padding: 10px
+    padding: 5px
 }
 
 .bet-option {
@@ -117,7 +121,7 @@ margin-left: auto;
      background: white; 
      border: 2px solid #0099CC;
      border-radius: 6px; 
-      padding: 16px 40px;      
+      padding: 16px 50px;      
       text-align: center;      
       display: inline-block;
       font-size: 16px;      
@@ -135,9 +139,8 @@ color: white;
 .bet-option:focus {
     background-color:#0099CC;
 color: white;
-
-
 }
+
 .play:hover, #start-button:hover, #restart-button:hover {
 background-color:white;
 color:  #008CBA
@@ -184,6 +187,9 @@ color:  #008CBA
     letter-spacing: .4rem;
     font-weight: 600;
 } 
+.play button:active, #play-double button:active {
+    transform: translateY(20px);
+}
 
 #game-end {
     display: none;
