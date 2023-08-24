@@ -24,7 +24,7 @@ h1 {
   display:none;
   padding: 2px;
   justify-content: center;
-  background-image: url('./assets/img/donut-background.png');
+  background-image: url('../assets/img/donut-background.png');
   height: calc(100vh - 6em);
 }
 
@@ -33,7 +33,7 @@ display: inline-block;
   height: calc(100vh - 6em);
   width: 100%;
   justify-content: center;
-  background-image: url('./assets/img/background.png');
+  background-image: url('../assets/img/background.png');
   background-size:cover;
 }
 
