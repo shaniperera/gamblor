@@ -43,7 +43,7 @@ class Game {
         // deal the player card and push to dealt cards array
         let cardImgPlayer = document.createElement("img");
         playerCard = game.dealCard();
-        cardImgPlayer.src = "/assets/img/" + playerCard + ".png";
+        cardImgPlayer.src = "./assets/img/" + playerCard + ".png";
         cardImgPlayer.id = "player-hidden";
         cardImgPlayer.style.transform = 'rotate(-5deg)';
         setTimeout(() => {
