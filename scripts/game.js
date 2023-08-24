@@ -11,7 +11,7 @@ class Game {
     }
 
     startGame() {
-        // hide start screen
+        // hide start and end screen
         this.startScreen.style.display = "none";
         this.gameEndScreen.style.display = "none";
         // show the game screen
@@ -24,7 +24,7 @@ class Game {
         }
         else {
             let shuffled = this.deck
-                //put each element in array in an object + give it a random sort key 
+                //put each element in the array in an object + give it a random sort key 
                 .map(card => ({ card, sort: Math.random() }))
                 // sort using the random key asc.
                 .sort((a, b) => a.sort - b.sort)
@@ -63,9 +63,11 @@ class Game {
         }, 800);
         game.dealtCards.push(dealerCard);
 
+        // if all cards are dealt, reshuffle them
         if (game.dealtCards.length === 52) {
             game.deck = game.dealtCards;
-            console.log(game.shuffleDeck());
+            game.dealtCards = [];
+            game.shuffleDeck();
         }
         game.checkWinner(cardMap, playerCard, dealerCard);
         return;
@@ -89,10 +91,12 @@ class Game {
         if (!card1 && !card2 && !cardMap) {
             return undefined;
         }
+        // get value of card based on first part of card name
         let playerCardValue = cardMap[card1.split("-")[0]];
         let dealerCardValue = cardMap[card2.split("-")[0]];
 
         bettingButtons.style.display = "flex";
+        // hide 'double' button until draw
         doubleButton.style.display = "none";
 
         if (playerCardValue > dealerCardValue) {
@@ -123,7 +127,7 @@ class Game {
             doubleButton.addEventListener("click", () => {
                 doubleBet(game.currentBet, game.cash);
             });
-
+            // prevent user from clicking another bet and show 'double' button
             bettingButtons.style.display = "none";
             doubleButton.style.display = "block";
         }
@@ -132,16 +136,20 @@ class Game {
 
     endGame() {
         if (game.cash === 0) {
-            swal("🙀", "You lost all your donuts to the casino. PLAY AGAIN?", "./assets/img/burns-excellent.gif");
-            // end game when less than min. bet
+            setTimeout(() => {
+                this.gameContainer.style.display = "none";
+            }, 1500);
             this.gameEndScreen.style.display = "block";
-            this.gameContainer.style.display = "none";
+            setTimeout(() => {
+                swal("🙀", "You lost all your donuts to the casino. PLAY AGAIN?", "./assets/img/burns-excellent.gif")
+            }, 1500);
+
         } else if (game.cash >= 500) {
+            setTimeout(() => {
+                location.reload();
+            }, 5000);
             swal("🥳", "You won!! Press START to play again!", "./assets/img/homer-woohoo.gif");
-            this.gameEndScreen.style.display = "none";
-            this.startScreen.style.display = "block";
         }
-
+        return
     }
-
 }
