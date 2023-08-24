@@ -115,22 +115,3 @@ function doubleBet(currentBet, currentCash) {
 resartButrron.addEventListener("click", function () {
   location.reload()
 });
-
-
-// todo: Steps:
-// 1. Load the game screen
-// 2. Get user bet amount option (min. = 10)- 
-//     a. if bet < bank, show msg
-//     b. if bet >= bank, update bet amout
-// 3. Deal 2 cards from the deck
-// 4. Check which dealt card wins: ++/ -- bank accordingly
-// 5. If draw, show 'war' option: double original bet OR forfeit 0.5 of bet
-//     a. if bank >= 2X bet, allow 'war'
-//     b. else decrease bank by 0.5 of original bet
-
-// 6. Check endGame () 
-//     a. if true, show restart game
-// sound on win or lose round
-// animation for words you won x amount
-// flip CanvasCaptureMediaStreamTrackget rid of images
-// intro and end screens
