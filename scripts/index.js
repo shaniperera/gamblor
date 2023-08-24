@@ -26,7 +26,7 @@ const cardMap = {
   "A": 14,
 }
 const startButton = document.getElementById("start-button");
-const resartButrron = document.getElementById("restart-button");
+const resartButton = document.getElementById("restart-button");
 const game = new Game(buildDeck());
 
 startButton.addEventListener("click", function () {
@@ -112,6 +112,8 @@ function doubleBet(currentBet, currentCash) {
   return;
 }
 
-resartButrron.addEventListener("click", function () {
+resartButton.addEventListener("click", function () {
+  // re-load URL
   location.reload()
+
 });
