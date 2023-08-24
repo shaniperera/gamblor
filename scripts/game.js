@@ -7,7 +7,7 @@ class Game {
         this.shuffled = [];
         this.dealtCards = [];
         this.currentBet = 0;
-        this.cash = 10;
+        this.cash = 100;
     }
 
     startGame() {
