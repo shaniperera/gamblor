@@ -86,13 +86,13 @@ function updatBank(result, cash, currentBet) {
   setTimeout(() => { thisBet.textContent = game.currentBet }, 1500);
   if (result) {
     game.cash = Number(cash) + Number(currentBet);
-    userBank.style.color = 'green';
+    setTimeout(() => { userBank.style.color = 'green' }, 1500);
     game.endGame();
 
-  } else {
+  } else if (!result) {
     game.cash = Number(cash) - Number(currentBet);
     game.endGame();
-    userBank.style.color = 'red';
+    setTimeout(() => { userBank.style.color = 'red' }, 1500);
   }
   setTimeout(() => { userBank.innerHTML = game.cash }, 1500);
   return;
