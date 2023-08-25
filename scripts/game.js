@@ -88,7 +88,7 @@ class Game {
     }
 
     checkWinner(cardMap, card1, card2) {
-        if (!card1 && !card2 && !cardMap) {
+        if (!card1 || !card2 || !cardMap) {
             return undefined;
         }
         // get value of card based on first part of card name
@@ -122,6 +122,7 @@ class Game {
             updatBank(false, game.cash, game.currentBet);
         }
         else {
+            // if draw, give option to double
             setTimeout(() => { swal("It's a DRAW!", "DOUBLE your bet to win big on the next round or PLAY with current bet.", "./assets/img/burns-sexy.jpg") }, 900);
 
             doubleButton.addEventListener("click", () => {
