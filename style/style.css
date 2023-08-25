@@ -198,7 +198,7 @@ color:  #008CBA
   width: 100%;
   height: 100%;
   justify-content: center;
-  background-image: url('/assets/img/background.png');
+  background-image: url('../assets/img/background.png');
   background-size:cover;
   justify-content: center;
   flex-direction: column;
