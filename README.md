@@ -1,6 +1,6 @@
 # "Gamblor!!"
 
-[Link to deloyed project:](https://google.com)
+[Link to deloyed project]([https://shaniperera.github.io/gamblor/])
 
 # Description
 "Gamblor!!" is a single player 'casino' style card game where the user makes bets to win 'donuts'.
